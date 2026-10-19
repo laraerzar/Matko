@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2g2ajywo47jr"]
+
+[ext_resource type="PackedScene" uid="uid://c0w4lbr4mkh2t" path="res://Scenes/space_station/clock.tscn" id="1_3kvuu"]
+
+[node name="ClockOption" type="Button" unique_id=1827774433]
+custom_minimum_size = Vector2(220, 220)
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+flat = true
+
+[node name="Clock" parent="." unique_id=714088456 instance=ExtResource("1_3kvuu")]
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

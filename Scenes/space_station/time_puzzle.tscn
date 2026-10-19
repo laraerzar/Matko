@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://elir88i0kna"]
+
+[ext_resource type="PackedScene" uid="uid://c2g2ajywo47jr" path="res://Scenes/space_station/clock_option.tscn" id="1_guff6"]
+[ext_resource type="Script" uid="uid://7xjyusfvyttm" path="res://Scenes/space_station/time_puzzle.gd" id="1_wx1mi"]
+
+[node name="TimePuzzle" type="Control" unique_id=922291772]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = 82.0
+offset_right = 37.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wx1mi")
+difficulty = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1583083673]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -80.0
+offset_right = -36.0
+offset_bottom = -83.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.36749998, 0.56770486, 0.8900973, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=532475071]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -83.0
+offset_right = -35.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="DiffLabel" type="Label" parent="VBoxContainer" unique_id=832939783]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Izberi težavnost"
+horizontal_alignment = 1
+
+[node name="Levels" type="HBoxContainer" parent="VBoxContainer" unique_id=22978429]
+layout_mode = 2
+alignment = 1
+
+[node name="Lahko" type="Button" parent="VBoxContainer/Levels" unique_id=1311074523]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Lahko"
+
+[node name="Srednje" type="Button" parent="VBoxContainer/Levels" unique_id=792127694]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Srednje"
+
+[node name="Tezko" type="Button" parent="VBoxContainer/Levels" unique_id=1100269053]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Težko"
+
+[node name="TimeLabel" type="Label" parent="VBoxContainer" unique_id=1761394690]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "07:45"
+horizontal_alignment = 1
+
+[node name="PromptLabel" type="Label" parent="VBoxContainer" unique_id=417148430]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Izberi pravo uro"
+horizontal_alignment = 1
+
+[node name="Options" type="HBoxContainer" parent="VBoxContainer" unique_id=1019778066]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ClockOption" parent="VBoxContainer/Options" unique_id=1827774433 instance=ExtResource("1_guff6")]
+layout_mode = 2
+
+[node name="ClockOption2" parent="VBoxContainer/Options" unique_id=2040340944 instance=ExtResource("1_guff6")]
+layout_mode = 2
+
+[node name="ClockOption3" parent="VBoxContainer/Options" unique_id=737972521 instance=ExtResource("1_guff6")]
+layout_mode = 2
+
+[node name="ClockOption4" parent="VBoxContainer/Options" unique_id=1334580883 instance=ExtResource("1_guff6")]
+layout_mode = 2

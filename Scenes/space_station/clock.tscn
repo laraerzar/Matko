@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0w4lbr4mkh2t"]
+
+[ext_resource type="Script" uid="uid://c54grkhth38sa" path="res://Scenes/space_station/clock.gd" id="1_on4o1"]
+
+[node name="Clock" type="Control" unique_id=714088456]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_on4o1")
+hours = 10
+minutes = 34
