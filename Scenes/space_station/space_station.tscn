@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://u3kuvjrqv3u4"]
+
+[ext_resource type="PackedScene" uid="uid://coa6wwhqqpob8" path="res://Scenes/player.tscn" id="1_1q7md"]
+[ext_resource type="Script" uid="uid://b7vrkswo5usc2" path="res://Scenes/space_station/space_station.gd" id="1_5wg84"]
+[ext_resource type="PackedScene" uid="uid://elir88i0kna" path="res://Scenes/space_station/time_puzzle.tscn" id="2_26c8b"]
+[ext_resource type="PackedScene" uid="uid://cbfvwkob5ks2y" path="res://Assets/Sprites/space_station/computer-system.glb" id="3_6v3rk"]
+
+[sub_resource type="Environment" id="Environment_8mjrn"]
+background_mode = 1
+background_color = Color(0.043137256, 0.0627451, 0.14901961, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.70363003, 0.8171554, 0.9531364, 1)
+ambient_light_energy = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qixdn"]
+albedo_color = Color(0.22745098, 0.27058825, 0.3882353, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qixdn"]
+size = Vector3(4, 3, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xupjq"]
+size = Vector3(4, 4, 2.6)
+
+[node name="SpaceStation" type="Node3D" unique_id=1775588022]
+script = ExtResource("1_5wg84")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=604081344]
+environment = SubResource("Environment_8mjrn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=787074358]
+transform = Transform3D(1, 1.5238793e-08, -1.7418022e-07, 0, 0.9961947, 0.08715574, 1.7484555e-07, -0.08715574, 0.9961947, 0, 0, 0)
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=956028484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+use_collision = true
+size = Vector3(20, 0.5, 14)
+material = SubResource("StandardMaterial3D_qixdn")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1860324168]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 9, 9)
+
+[node name="Player" parent="." unique_id=1446420488 instance=ExtResource("1_1q7md")]
+
+[node name="PuzzleLayer" type="CanvasLayer" parent="." unique_id=1669542137]
+visible = false
+
+[node name="TimePuzzle" parent="PuzzleLayer" unique_id=922291772 instance=ExtResource("2_26c8b")]
+
+[node name="Terminal" type="Area3D" parent="." unique_id=71551346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terminal" unique_id=464023455]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_qixdn")
+
+[node name="computer-system2" parent="Terminal" unique_id=354145782 instance=ExtResource("3_6v3rk")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Label3D" type="Label3D" parent="Terminal" unique_id=1035981033]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4, 0)
+visible = false
+billboard = 1
+text = "Pritisni E"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terminal" unique_id=291557310]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terminal/StaticBody3D" unique_id=780002242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+shape = SubResource("BoxShape3D_xupjq")

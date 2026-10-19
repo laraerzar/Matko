@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://coa6wwhqqpob8"]
+
+[ext_resource type="Script" uid="uid://cow81cipjyl5r" path="res://Scenes/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://x16s1yxvedpl" path="res://Scenes/matko.tscn" id="2_6t5aa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qixdn"]
+margin = 0.0
+height = 3.2
+
+[node name="Player" type="CharacterBody3D" unique_id=1446420488]
+script = ExtResource("1_cvnsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1557870834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("CapsuleShape3D_qixdn")
+
+[node name="Matko" parent="." unique_id=726047071 instance=ExtResource("2_6t5aa")]

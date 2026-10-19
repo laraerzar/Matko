@@ -53,6 +53,7 @@ horizontal_alignment = 1
 
 [node name="Levels" type="HBoxContainer" parent="VBoxContainer" unique_id=22978429]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Lahko" type="Button" parent="VBoxContainer/Levels" unique_id=1311074523]
@@ -70,6 +71,17 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Težko"
 
+[node name="Tezko2" type="Button" parent="VBoxContainer/Levels" unique_id=1179079844]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Potovanje"
+
+[node name="ProgressLabel" type="Label" parent="VBoxContainer" unique_id=1781098004]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Pravilno: 0/5"
+horizontal_alignment = 1
+
 [node name="TimeLabel" type="Label" parent="VBoxContainer" unique_id=1761394690]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -81,6 +93,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Izberi pravo uro"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Options" type="HBoxContainer" parent="VBoxContainer" unique_id=1019778066]
 layout_mode = 2
