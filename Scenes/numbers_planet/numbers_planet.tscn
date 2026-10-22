@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://bafs02yabb4mv"]
+
+[ext_resource type="PackedScene" uid="uid://coa6wwhqqpob8" path="res://Scenes/player.tscn" id="1_857gh"]
+[ext_resource type="PackedScene" uid="uid://dkbmx1jwdqkqq" path="res://Assets/Sprites/space_station/floor.glb" id="2_fq4ce"]
+[ext_resource type="Script" uid="uid://bqowfwaotmc24" path="res://Scenes/numbers_planet/floor_generator.gd" id="3_17403"]
+[ext_resource type="PackedScene" uid="uid://dk71wajxh4lfc" path="res://Assets/Sprites/space_station/computer-wide.glb" id="4_rlj50"]
+[ext_resource type="PackedScene" uid="uid://c7dbplw27wj5a" path="res://Assets/Sprites/characters/character-q.glb" id="5_tejkw"]
+[ext_resource type="PackedScene" uid="uid://bfehecrrdvwda" path="res://Assets/Sprites/space_station/computer.glb" id="6_0prxf"]
+[ext_resource type="PackedScene" uid="uid://bqao5gbgun8vt" path="res://Assets/Sprites/space/rail.glb" id="6_tejkw"]
+[ext_resource type="PackedScene" uid="uid://c07jlgga24kql" path="res://Assets/Sprites/space_station/table.glb" id="7_05q2t"]
+[ext_resource type="PackedScene" uid="uid://ceimlp3t2utvg" path="res://Assets/Sprites/space_station/table-display-planet.glb" id="8_g1ukb"]
+
+[sub_resource type="Environment" id="Environment_tftmq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvo80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clcpt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bia7h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tftmq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oltf"]
+
+[node name="NumbersPlanet" type="Node3D" unique_id=1840829943]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=452524896]
+transform = Transform3D(-1, -6.1817246e-08, 6.1817246e-08, 0, 0.7071068, 0.7071068, -8.742278e-08, 0.7071068, -0.7071068, 14.834126, 13.119144, -4.682192)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1410002749]
+environment = SubResource("Environment_tftmq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1438526273]
+transform = Transform3D(1, 1.5238793e-08, -1.7418022e-07, 0, 0.9961947, 0.08715574, 1.7484555e-07, -0.08715574, 0.9961947, 14.990079, 36.91263, 17.86023)
+
+[node name="Player" parent="." unique_id=1446420488 instance=ExtResource("1_857gh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="Room" type="Node3D" parent="." unique_id=1732614656]
+
+[node name="Rails" type="Node3D" parent="Room" unique_id=1607151347]
+
+[node name="LeftCollision" type="StaticBody3D" parent="Room/Rails" unique_id=1717132388]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Rails/LeftCollision" unique_id=255448619]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 35, 29, 0, 13.516)
+shape = SubResource("BoxShape3D_kvo80")
+
+[node name="RightCollision" type="StaticBody3D" parent="Room/Rails" unique_id=1310059148]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Rails/RightCollision" unique_id=1391071672]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 35, 1, 0, 13.516)
+shape = SubResource("BoxShape3D_kvo80")
+
+[node name="Top Collision" type="StaticBody3D" parent="Room/Rails" unique_id=2101596968]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Rails/Top Collision" unique_id=1320519365]
+transform = Transform3D(-4.371139e-08, 0, 35, 0, 5, 0, -1, 0, -1.5298986e-06, 14.512, 0, 29)
+shape = SubResource("BoxShape3D_kvo80")
+
+[node name="BottomCollision" type="StaticBody3D" parent="Room/Rails" unique_id=1961355385]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Rails/BottomCollision" unique_id=1205345226]
+transform = Transform3D(-4.371139e-08, 0, 35, 0, 5, 0, -1, 0, -1.5298986e-06, 14.512034, 0, 0.99999994)
+shape = SubResource("BoxShape3D_kvo80")
+
+[node name="computer-wide2" parent="Room" unique_id=1138239981 instance=ExtResource("4_rlj50")]
+transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 15.593758, -0.6, 26.392944)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/computer-wide2" unique_id=2008949477]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/computer-wide2/StaticBody3D" unique_id=1750833027]
+transform = Transform3D(0.8, 0, 0, 0, 0.5, 0, 0, 0, 0.8, 0, 0.2411065, 0)
+shape = SubResource("BoxShape3D_clcpt")
+
+[node name="table-display-planet2" parent="Room" unique_id=1064803285 instance=ExtResource("8_g1ukb")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.935602, -0.6, 10.051587)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/table-display-planet2" unique_id=1788119533]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/table-display-planet2/StaticBody3D" unique_id=1603587893]
+transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, -0.24625827, 0.24625827, 0.25141948)
+shape = SubResource("BoxShape3D_bia7h")
+
+[node name="Floor" type="Node3D" parent="Room" unique_id=1913322166]
+
+[node name="FloorGenerator" type="Node3D" parent="Room/Floor" unique_id=915042289]
+script = ExtResource("3_17403")
+tile_scene = ExtResource("2_fq4ce")
+rail_scene = ExtResource("6_tejkw")
+
+[node name="floor2" parent="Room/Floor" unique_id=1891060819 instance=ExtResource("2_fq4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+
+[node name="floor3" parent="Room/Floor" unique_id=1358323739 instance=ExtResource("2_fq4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -0.6, 29)
+
+[node name="floor4" parent="Room/Floor" unique_id=731884106 instance=ExtResource("2_fq4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -0.6, 0)
+
+[node name="floor5" parent="Room/Floor" unique_id=392319894 instance=ExtResource("2_fq4ce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 29)
+
+[node name="GroundCollision" type="StaticBody3D" parent="Room/Floor" unique_id=1761932145]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor/GroundCollision" unique_id=1029705195]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 20, -0.8, 20)
+shape = SubResource("BoxShape3D_tftmq")
+
+[node name="FrontDesk" type="Node3D" parent="Room" unique_id=2093408445]
+
+[node name="TableCollision" type="StaticBody3D" parent="Room/FrontDesk" unique_id=1456038206]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/TableCollision" unique_id=2050896154]
+transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 20, 26.336199, 0.24039304, 12.329422)
+shape = SubResource("BoxShape3D_8oltf")
+
+[node name="character-q2" parent="Room/FrontDesk" unique_id=837203712 instance=ExtResource("5_tejkw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.998537, -0.6, 12.604437)
+
+[node name="computer2" parent="Room/FrontDesk" unique_id=219799819 instance=ExtResource("6_0prxf")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 25.429108, -0.6, 8.715178)
+
+[node name="table2" parent="Room/FrontDesk" unique_id=282024065 instance=ExtResource("7_05q2t")]
+transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 25.657963, -0.6, 5)
+
+[node name="computer3" parent="Room/FrontDesk" unique_id=103712442 instance=ExtResource("6_0prxf")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 25.478573, -0.6, 16.395153)
+
+[node name="table3" parent="Room/FrontDesk" unique_id=1989350506 instance=ExtResource("7_05q2t")]
+transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 25.70985, -0.6, 12.685725)
+
+[node name="table4" parent="Room/FrontDesk" unique_id=253064090 instance=ExtResource("7_05q2t")]
+transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 25.57167, -0.6, 20.119106)
