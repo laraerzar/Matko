@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ymd5rqo0ucge"]
+
+[ext_resource type="Script" uid="uid://dpqqw7x4kkncw" path="res://Scenes/market/weighting_hard.gd" id="1_6ny7u"]
+
+[node name="WeightingHard" type="Control" unique_id=1222102123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ny7u")
+
+[node name="Label" type="Label" parent="." unique_id=1507580380]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 177.0
+offset_right = 562.0
+offset_bottom = 200.0
+text = "TEZKO"
+
+[node name="Button" type="Button" parent="." unique_id=1525785091]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 223.0
+offset_right = 678.0
+offset_bottom = 350.0
+text = "NAZAJ"

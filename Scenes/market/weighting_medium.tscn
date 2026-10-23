@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dos0sjyo2bg8n"]
+
+[ext_resource type="Script" uid="uid://qputtksla7ch" path="res://Scenes/market/weighting_medium.gd" id="1_7pr4t"]
+
+[node name="WeightingMedium" type="Control" unique_id=1345039961]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7pr4t")
+
+[node name="Label" type="Label" parent="." unique_id=1100030122]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 210.0
+offset_right = 597.0
+offset_bottom = 233.0
+text = "SREDNJE"
+
+[node name="Button" type="Button" parent="." unique_id=1890739403]
+layout_mode = 0
+offset_left = 461.0
+offset_top = 257.0
+offset_right = 680.0
+offset_bottom = 347.0
+text = "NAZAJ"
