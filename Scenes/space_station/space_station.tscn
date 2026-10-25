@@ -39,6 +39,16 @@ size = Vector3(4, 3, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xupjq"]
 size = Vector3(4, 4, 2.6)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ds1xd"]
+albedo_color = Color(1.294, 1.055, 0.44, 1)
+emission_enabled = true
+emission = Color(1, 0.7019608, 0.2784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7287"]
+albedo_color = Color(1.294, 1.055, 0.44, 1)
+emission_enabled = true
+emission = Color(1, 0.7019608, 0.2784314, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xupjq"]
 albedo_color = Color(0.08235294, 0.12941177, 0.21176471, 1)
 emission = Color(0.9029077, 0.5959084, 0.16571903, 1)
@@ -46,6 +56,17 @@ emission_energy_multiplier = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qixdn"]
 albedo_color = Color(0.039215688, 0.03529412, 0.2509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qixdn"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.043137256, 0.0627451, 0.14901961, 0.8509804)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="SpaceStation" type="Node3D" unique_id=1775588022]
 script = ExtResource("1_5wg84")
@@ -84,12 +105,6 @@ shape = SubResource("BoxShape3D_qixdn")
 [node name="computer-system2" parent="Terminal" unique_id=354145782 instance=ExtResource("3_6v3rk")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
-[node name="Label3D" type="Label3D" parent="Terminal" unique_id=1035981033]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 4, 0)
-visible = false
-billboard = 1
-text = "Pritisni E"
-
 [node name="StaticBody3D" type="StaticBody3D" parent="Terminal" unique_id=291557310]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terminal/StaticBody3D" unique_id=780002242]
@@ -101,6 +116,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 light_color = Color(1, 0.7019608, 0.2784314, 1)
 light_energy = 10.338
 omni_range = 5.563
+
+[node name="Sign" type="Label3D" parent="Terminal" unique_id=1625286947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+billboard = 1
+text = "VOZOVNICE"
+font_size = 72
+outline_size = 16
+
+[node name="Guide" type="Node3D" parent="Terminal" unique_id=1393756630]
+
+[node name="Arrow" type="CSGCylinder3D" parent="Terminal/Guide" unique_id=1248379671]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 5, 0)
+radius = 0.35
+height = 0.7
+sides = 12
+cone = true
+material = SubResource("StandardMaterial3D_ds1xd")
+
+[node name="Ring" type="CSGTorus3D" parent="Terminal/Guide" unique_id=2108467287]
+transform = Transform3D(0.99999845, 0, 0.0017453283, 0, 0.3, 0, -0.0017453283, 0, 0.99999845, 0, 0, 0)
+inner_radius = 2.8
+outer_radius = 3.0
+sides = 32
+material = SubResource("StandardMaterial3D_b7287")
 
 [node name="Room" type="Node3D" parent="." unique_id=1240509255]
 
@@ -378,9 +417,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16, -0.6, 6)
 
 [node name="floor119" parent="Room/Floor" unique_id=1162677484 instance=ExtResource("5_ei3tb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -16, -0.6, 7)
-
-[node name="floor85" parent="Room/Floor" unique_id=915695382 instance=ExtResource("5_ei3tb")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="floor84" parent="Room/Floor" unique_id=2130109946 instance=ExtResource("5_ei3tb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -18, -0.6, 6)
@@ -792,3 +828,41 @@ texture = ExtResource("18_7mdpg")
 [node name="Sprite3D3" type="Sprite3D" parent="Room" unique_id=1665163501]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -31.754784, -2.6174684, -29.91)
 texture = ExtResource("19_14j7a")
+
+[node name="IntroLayer" type="CanvasLayer" parent="." unique_id=1752261036]
+visible = false
+
+[node name="Margin" type="MarginContainer" parent="IntroLayer" unique_id=2147220169]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 30
+
+[node name="Box" type="PanelContainer" parent="IntroLayer/Margin" unique_id=404136700]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_qixdn")
+
+[node name="VBox" type="VBoxContainer" parent="IntroLayer/Margin/Box" unique_id=1275285765]
+layout_mode = 2
+
+[node name="IntroText" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=499098537]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 3
+
+[node name="ContinueHint" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=1059828440]
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pritisni preslednico za naprej...
+"
+horizontal_alignment = 2
+vertical_alignment = 2
