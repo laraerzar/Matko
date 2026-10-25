@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://xtbe65v6lrmd"]
+
+[ext_resource type="Script" uid="uid://chxf2ilaef38w" path="res://Scenes/numbers_planet/number_blocks_game.gd" id="1_iclg0"]
+
+[node name="NumberBlocksGame" type="Control" unique_id=1941983573]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iclg0")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1492756649]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=462068068]
+layout_mode = 2
+alignment = 1
+
+[node name="PromptLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1170180889]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ProgressLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=425526056]
+layout_mode = 2
+
+[node name="TargetLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=605599286]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Board" type="Panel" parent="CenterContainer/VBoxContainer" unique_id=1464036988]
+custom_minimum_size = Vector2(630, 380)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CountLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1594296498]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=877240378]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ItemBar" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1491947279]
+layout_mode = 2
+alignment = 1
+
+[node name="OnesButton" type="Button" parent="CenterContainer/VBoxContainer/ItemBar" unique_id=70717189]
+layout_mode = 2
+
+[node name="TensButton" type="Button" parent="CenterContainer/VBoxContainer/ItemBar" unique_id=1228047512]
+layout_mode = 2
+
+[node name="HundredsButton" type="Button" parent="CenterContainer/VBoxContainer/ItemBar" unique_id=1784642050]
+layout_mode = 2
+
+[node name="CheckAnswerButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1606239869]
+layout_mode = 2
+text = "Preveri odgovor"
