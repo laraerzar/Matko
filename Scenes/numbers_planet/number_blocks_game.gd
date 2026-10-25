@@ -407,6 +407,7 @@ func check_answer() -> void:
 
 		if correct_count >= questions_to_win:
 			feedback_label.text = "Odlično! Računalnik je popravljen!"
+			get_tree().change_scene_to_file("res://Scenes/numbers_planet/numbers_planet.tscn")
 		else:
 			await get_tree().create_timer(1.0).timeout
 			new_question()

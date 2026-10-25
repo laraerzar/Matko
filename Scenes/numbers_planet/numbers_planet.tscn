@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bafs02yabb4mv"]
 
+[ext_resource type="Script" uid="uid://cciggybsj3fff" path="res://Scenes/numbers_planet/numbers_planet.gd" id="1_0prxf"]
 [ext_resource type="PackedScene" uid="uid://coa6wwhqqpob8" path="res://Scenes/player.tscn" id="1_857gh"]
 [ext_resource type="PackedScene" uid="uid://dkbmx1jwdqkqq" path="res://Assets/Sprites/space_station/floor.glb" id="2_fq4ce"]
 [ext_resource type="Script" uid="uid://bqowfwaotmc24" path="res://Scenes/numbers_planet/floor_generator.gd" id="3_17403"]
@@ -16,13 +17,18 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_clcpt"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0prxf"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_bia7h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tftmq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oltf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_05q2t"]
+
 [node name="NumbersPlanet" type="Node3D" unique_id=1840829943]
+script = ExtResource("1_0prxf")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=452524896]
 transform = Transform3D(-1, -6.1817246e-08, 6.1817246e-08, 0, 0.7071068, 0.7071068, -8.742278e-08, 0.7071068, -0.7071068, 14.834126, 13.119144, -4.682192)
@@ -64,14 +70,25 @@ shape = SubResource("BoxShape3D_kvo80")
 transform = Transform3D(-4.371139e-08, 0, 35, 0, 5, 0, -1, 0, -1.5298986e-06, 14.512034, 0, 0.99999994)
 shape = SubResource("BoxShape3D_kvo80")
 
-[node name="computer-wide2" parent="Room" unique_id=1138239981 instance=ExtResource("4_rlj50")]
+[node name="GameComputer" parent="Room" unique_id=1138239981 instance=ExtResource("4_rlj50")]
 transform = Transform3D(-5, 0, -4.371139e-07, 0, 5, 0, 4.371139e-07, 0, -5, 15.593758, -0.6, 26.392944)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Room/computer-wide2" unique_id=2008949477]
+[node name="Label3D" type="Label3D" parent="Room/GameComputer" unique_id=1405789152]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.02118664, 0.64749026, -0.2244018)
+text = "PRITISNI E
+"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/computer-wide2/StaticBody3D" unique_id=1750833027]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/GameComputer" unique_id=2008949477]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/GameComputer/StaticBody3D" unique_id=1750833027]
 transform = Transform3D(0.8, 0, 0, 0, 0.5, 0, 0, 0, 0.8, 0, 0.2411065, 0)
 shape = SubResource("BoxShape3D_clcpt")
+
+[node name="Area3D" type="Area3D" parent="Room/GameComputer" unique_id=1621942045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014656831, 0.35208738, 3.469447e-16)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/GameComputer/Area3D" unique_id=2021529400]
+shape = SubResource("BoxShape3D_0prxf")
 
 [node name="table-display-planet2" parent="Room" unique_id=1064803285 instance=ExtResource("8_g1ukb")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 12.935602, -0.6, 10.051587)
@@ -115,8 +132,20 @@ shape = SubResource("BoxShape3D_tftmq")
 transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 20, 26.336199, 0.24039304, 12.329422)
 shape = SubResource("BoxShape3D_8oltf")
 
-[node name="character-q2" parent="Room/FrontDesk" unique_id=837203712 instance=ExtResource("5_tejkw")]
+[node name="character" parent="Room/FrontDesk" unique_id=837203712 instance=ExtResource("5_tejkw")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.998537, -0.6, 12.604437)
+
+[node name="Area3D" type="Area3D" parent="Room/FrontDesk/character" unique_id=817818278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1055685e-09, 2.1501465, 2.644806)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/character/Area3D" unique_id=182823795]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("BoxShape3D_05q2t")
+
+[node name="Label3D" type="Label3D" parent="Room/FrontDesk/character" unique_id=1944393759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1202393, 0)
+text = "POMAGAH POPRAVIT 
+RAČUNALNIK"
 
 [node name="computer2" parent="Room/FrontDesk" unique_id=219799819 instance=ExtResource("6_0prxf")]
 transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 25.429108, -0.6, 8.715178)
