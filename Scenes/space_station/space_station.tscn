@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://hvgn7vryt08s" path="res://Assets/Sprites/planets/planet09.png" id="18_7mdpg"]
 [ext_resource type="PackedScene" uid="uid://b3esbml54ploe" path="res://Assets/Sprites/space_station/wall-door-wide.glb" id="18_74cvs"]
 [ext_resource type="Texture2D" uid="uid://xvr50m1scrms" path="res://Assets/Sprites/planets/planet07.png" id="19_14j7a"]
+[ext_resource type="Script" uid="uid://wy8vq01gmx63" path="res://Scenes/space_station/route_map.gd" id="22_7mdpg"]
 
 [sub_resource type="Environment" id="Environment_8mjrn"]
 background_mode = 1
@@ -866,3 +867,41 @@ text = "Pritisni preslednico za naprej...
 "
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="RouteMapLayer" type="CanvasLayer" parent="." unique_id=184317710]
+layer = 10
+
+[node name="RouteMap" type="Control" parent="RouteMapLayer" unique_id=1961381328]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_7mdpg")
+
+[node name="Dim" type="ColorRect" parent="RouteMapLayer/RouteMap" unique_id=122726740]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.043137256, 0.0627451, 0.14901961, 0.75686276)
+
+[node name="Center" type="CenterContainer" parent="RouteMapLayer/RouteMap" unique_id=282106650]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="VBox" type="VBoxContainer" parent="RouteMapLayer/RouteMap/Center" unique_id=1828631102]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="RouteMapLayer/RouteMap/Center/VBox" unique_id=1868363719]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Izberi pot"
+horizontal_alignment = 1
+
+[node name="Planets" type="HBoxContainer" parent="RouteMapLayer/RouteMap/Center/VBox" unique_id=1314334324]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1

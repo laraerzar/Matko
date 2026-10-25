@@ -17,6 +17,7 @@ var correct_count: int = 0
 var mistakes: int = 0
 var locked: bool = false
 var round_id: int = 0
+var level_plan: Array[int] = []   # težavnost za vsako vprašanje; prazno = običajno
 
 func _ready() -> void:
 	for i in options.get_child_count():
@@ -38,6 +39,12 @@ func start_round() -> void:
 func set_difficulty(level: int) -> void:
 	difficulty = level
 	start_round()
+	
+func set_plan(plan: Array) -> void:
+	level_plan.assign(plan)
+	questions_to_win = level_plan.size()
+	levels.visible = false   # gumbi za težavnost se skrijejo
+	start_round()
 
 func update_progress() -> void:
 	progress_label.text = "Pravilno: %d / %d" % [correct_count, questions_to_win]
@@ -50,6 +57,8 @@ func finish() -> void:
 
 func new_question() -> void:
 	locked = false
+	if level_plan.size() > 0:
+		difficulty = level_plan[mini(correct_count, level_plan.size() - 1)]
 	var answers: Array[Vector2i]
 	if difficulty == 3:
 		answers = journey_question()
