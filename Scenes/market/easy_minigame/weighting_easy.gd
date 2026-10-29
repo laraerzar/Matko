@@ -16,6 +16,7 @@ signal level_completed # sproži se po zadnji stopnji
 @onready var left_mass_label = $LeftMassLabel
 @onready var right_mass_label = $RightMassLabel
 @onready var info_label = $InfoLabel
+@onready var one_apple_mass_label = $AppleMassLabel
 
 # vsi elementi, ki se prikažejo komaj po kliku na gumb Začni
 @onready var game_nodes = [
@@ -23,6 +24,7 @@ signal level_completed # sproži se po zadnji stopnji
 	fruit_tray,
 	left_mass_label,
 	right_mass_label,
+	one_apple_mass_label,
 	info_label,
 	back_button
 ]
@@ -39,7 +41,7 @@ const INFO_FONT_SIZE := 22
 # jabolko
 const APPLE_SCENE := preload("res://Scenes/market/minigame_assets/apple_view.tscn")
 const APPLE_SIZE := 60.0
-const APPLE_OFFSET := Vector2(-20, 0) # odmik jabolke na tehtnici
+const APPLE_OFFSET := Vector2(-20, 0) # odmik jabolka na tehtnici
 const APPLE_MASS := 200
 const MAX_APPLES := 6
 
@@ -62,7 +64,7 @@ const LEVELS := [
 	},
 	{
 		"mass": 1200,
-		"story": "Na tržnici kmet Janez prodaja jabolka. Gospa Mojca želi kupiti %d gramov za jabolčni sok. Pomagaj ji jih stehtati!",
+		"story": "Na tržnici je kmetu Janezu zmanjkalo jabolk za zadnje naročilo. Prosil te je, če mu oddaš %d gramov jabolk. Pomagaj mu dokončati naročilo!",
 	},
 	{
 		"mass": 800,
@@ -146,7 +148,7 @@ func load_level() -> void:
 	next_level_button.visible = false
 	info_label.text = level["story"] % target_mass
 
-	# v zadnji stopnji gumbek izpšie "Končaj"
+	# v zadnji stopnji gumbek izpiše "Končaj"
 	if level_index == LEVELS.size() - 1:
 		next_level_button.text = "Končaj"
 	else:
@@ -201,9 +203,9 @@ func _on_check_pressed() -> void:
 
 	if left_mass == target_mass:
 		if level_index == LEVELS.size() - 1:
-			info_label.text = "Čestitam! Vse stopnje opravljene! Klikni na gumb 'Končaj' in se pomeri v težjih izzivih."
+			info_label.text = "Čestitam! Vsa naročila so uspešno pripravljena! Klikni na gumb \"Končaj\" in se pomeri v težjih izzivih."
 		else:
-			info_label.text = "Čestitam! Tehtnica je v ravnovesju! Klikni na gumb 'Naslednja stopnja' za nadaljevanje."
+			info_label.text = "Čestitam! Naročilo je pravilno pripravljeno in tehtnica je v ravnovesju. Klikni na gumb \"Naslednja stopnja\" za nadaljevanje."
 		next_level_button.visible = true
 		return
 
@@ -214,8 +216,9 @@ func _on_check_pressed() -> void:
 
 	await get_tree().create_timer(RESET_DELAY).timeout
 
-	# po napačnem odgovoru znova naložim isto stopnjo
-	load_level()
+	# po napačnem odgovoru znova naložim isto stopnjo (če igralec medtem ni zapustil scene)
+	if is_inside_tree():
+		load_level()
 
 # posodobim oznake mase, vidnost gumba za preverjanje pa nagib tehtnice
 func update_balance() -> void:

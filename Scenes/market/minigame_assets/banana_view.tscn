@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bfftr3s61wig5"]
+
+[ext_resource type="PackedScene" uid="uid://ccvgvyw7ffjk6" path="res://Assets/Sprites/market/food_kit/banana.glb" id="1_h3bnd"]
+
+[sub_resource type="Environment" id="Environment_eowmk"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+tonemap_mode = 2
+
+[node name="BananaView" type="SubViewportContainer" unique_id=1469992331]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1156054520]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 100)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=267376031]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=832426862]
+transform = Transform3D(0.0033705775, 0.32327154, 0.94630027, 0.006816042, 0.94627625, -0.3232876, -0.9999711, 0.0075396886, 0.0009860648, -0.034421563, -0.13289134, 0.22581229)
+environment = SubResource("Environment_eowmk")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1655469183]
+transform = Transform3D(0.67416835, 0.6335275, 0.37965775, 0.71470076, -0.6892318, -0.11900556, 0.18627891, 0.35157153, -0.91744083, 0.4337335, 0.30875784, -2.0052648)
+
+[node name="banana" parent="SubViewport" unique_id=1568367920 instance=ExtResource("1_h3bnd")]
+transform = Transform3D(-0.9437233, 0.29223138, -0.15488231, 0.028410563, 0.53819007, 0.84234464, 0.32951555, 0.79053926, -0.516205, -0.46200952, -0.0009905994, 0.05135846)

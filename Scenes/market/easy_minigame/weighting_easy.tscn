@@ -261,16 +261,16 @@ size_flags_vertical = 4
 [node name="IntroLabel" type="Label" parent="InstructionsPanel/InstructionsContent" unique_id=693849923]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Pomagaj Matku uravnovesiti tehtnico!
-
-Matko mora pripraviti sadno naročilo in potrebuje tvojo pomoč. Na eni strani tehtnice je utež z določeno maso, na drugi pa moraš dodati toliko jabolk, da bo tehtnica uravnotežena.
+text = "Matko mora pripraviti sadna naročila in potrebuje tvojo pomoč. Na eni strani tehtnice je utež z določeno maso, na drugi pa moraš dodati toliko jabolk, da bo tehtnica uravnotežena.
 
 Tvoja naloga:
-- Z levim klikom na skledo jabolk ga dodaj na levo stran tehtnice.
+- Z levim klikom na skledo jabolk ga dodaš na levo stran tehtnice.
 - Dodajaj jabolka, dokler ne bo njihova skupna masa enaka masi uteži.
 - Ko misliš, da si nalogo rešil, klikni na gumb \"Preveri\".
 
-Zapomni si: eno jabolko tehta 200 gramov! (200 g)
+Namigi:
+- Jabolko lahko z levim klikom na skledo tehtnice tudi odstraniš!
+- Masa enega jabolka je napisana na skledi, v kateri se nahaja.
 
 Boš kos nalogi?"
 autowrap_mode = 3
@@ -323,6 +323,16 @@ offset_right = 168.0
 offset_bottom = 635.0
 scale = Vector2(1.5, 1.5)
 mouse_filter = 0
+
+[node name="AppleMassLabel" type="Label" parent="." unique_id=1791349818]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 600.0
+offset_right = 176.00009
+offset_bottom = 636.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "200 g"
 
 [node name="CheckButton" type="Button" parent="." unique_id=338833577]
 layout_mode = 0
