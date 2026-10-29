@@ -977,9 +977,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -573.0
+offset_left = -522.0
 offset_top = -319.0
-offset_right = 574.0
+offset_right = 512.0
 offset_bottom = 323.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1002,7 +1002,6 @@ script = ExtResource("46_w3pdj")
 [node name="PartsRow" type="HBoxContainer" parent="PizzaPuzzle/VBoxContainer" unique_id=851811088]
 layout_mode = 2
 theme_override_constants/separation = 20
-alignment = 1
 
 [node name="MinusButton" type="Button" parent="PizzaPuzzle/VBoxContainer/PartsRow" unique_id=1320652523]
 custom_minimum_size = Vector2(60, 0)
@@ -1015,8 +1014,10 @@ layout_mode = 2
 text = "+"
 
 [node name="SubmitButton" type="Button" parent="PizzaPuzzle/VBoxContainer" unique_id=1506842515]
-custom_minimum_size = Vector2(200, 22)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9892935, 0.79912066, 0.8828746, 1)
+theme_override_colors/font_focus_color = Color(0.9589781, 0.9456592, 0.94509274, 1)
+theme_override_font_sizes/font_size = 22
 text = "Preveri"
 
 [node name="FeedbackLabel" type="Label" parent="PizzaPuzzle/VBoxContainer" unique_id=1506898471]
