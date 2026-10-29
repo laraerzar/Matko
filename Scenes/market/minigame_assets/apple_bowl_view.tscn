@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://flcvmbdrfel4"]
+
+[ext_resource type="PackedScene" uid="uid://c2dip7s6w63m2" path="res://Assets/Sprites/market/food_kit/apple.glb" id="1_2m3fn"]
+[ext_resource type="PackedScene" uid="uid://ciyva8f24dexk" path="res://Assets/Sprites/market/food_kit/bowl.glb" id="2_q6hxj"]
+
+[sub_resource type="Environment" id="Environment_2oc2i"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+tonemap_mode = 2
+
+[node name="AppleBowlView" type="SubViewportContainer" unique_id=787293552]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=490397054]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 100)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=353447562]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1837423760]
+transform = Transform3D(-0.2557779, -0.273414, 0.9272662, 0.035300996, 0.95589125, 0.29159188, -0.96609086, 0.107316166, -0.23484407, 0.38079375, 0.16025163, -0.043235376)
+environment = SubResource("Environment_2oc2i")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1694121298]
+transform = Transform3D(0.67416835, 0.6335275, 0.37965775, 0.71470076, -0.6892318, -0.11900556, 0.18627891, 0.35157153, -0.91744083, 0.4337335, 0.30875784, -2.0052648)
+
+[node name="apple" parent="SubViewport" unique_id=428626760 instance=ExtResource("1_2m3fn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.036282897, 0, 0.049127102)
+
+[node name="apple2" parent="SubViewport" unique_id=491388116 instance=ExtResource("1_2m3fn")]
+transform = Transform3D(1, 0, 0, 0, 0.9953962, 0.09584575, 0, -0.09584575, 0.9953962, -0.1824886, 0, 0.021435361)
+
+[node name="apple3" parent="SubViewport" unique_id=1980193557 instance=ExtResource("1_2m3fn")]
+transform = Transform3D(1, 0, 0, 0, 0.98162717, -0.190809, 0, 0.190809, 0.98162717, -0.044, 0, 0.124)
+
+[node name="bowl" parent="SubViewport" unique_id=640763861 instance=ExtResource("2_q6hxj")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.046856496, 0.050460704)

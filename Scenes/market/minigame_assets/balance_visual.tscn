@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://di4wful0wppeb"]
+
+[ext_resource type="Script" uid="uid://cgw5ee4lxrmrs" path="res://Scenes/market/minigame_assets/balance_visual.gd" id="1_stbpw"]
+
+[node name="BalanceVisual" type="Control" unique_id=1159585820]
+custom_minimum_size = Vector2(700, 350)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 226.0
+offset_top = 76.0
+offset_right = 926.0
+offset_bottom = 426.0
+script = ExtResource("1_stbpw")

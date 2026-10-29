@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ymd5rqo0ucge"]
 
-[ext_resource type="Script" uid="uid://dpqqw7x4kkncw" path="res://Scenes/market/weighting_hard.gd" id="1_6ny7u"]
+[ext_resource type="Script" uid="uid://dpqqw7x4kkncw" path="res://Scenes/market/hard_minigame/weighting_hard.gd" id="1_6ny7u"]
 
 [node name="WeightingHard" type="Control" unique_id=1222102123]
 layout_mode = 3

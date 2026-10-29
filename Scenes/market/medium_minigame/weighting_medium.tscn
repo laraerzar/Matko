@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dos0sjyo2bg8n"]
 
-[ext_resource type="Script" uid="uid://qputtksla7ch" path="res://Scenes/market/weighting_medium.gd" id="1_7pr4t"]
+[ext_resource type="Script" uid="uid://qputtksla7ch" path="res://Scenes/market/medium_minigame/weighting_medium.gd" id="1_7pr4t"]
 
 [node name="WeightingMedium" type="Control" unique_id=1345039961]
 layout_mode = 3
