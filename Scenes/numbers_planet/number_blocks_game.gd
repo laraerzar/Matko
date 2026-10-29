@@ -397,8 +397,8 @@ func check_answer() -> void:
 
 func update_count() -> void:
 	count_label.text = (
-		"Stotice: %d | Desetice: %d | Enice: %d"
-		% [counts[100], counts[10], counts[1]]
+		"Enice: %d | Desetice: %d | Stotice: %d"
+		% [counts[1], counts[10], counts[100]]
 	)
 
 #stilizacija igre in barv

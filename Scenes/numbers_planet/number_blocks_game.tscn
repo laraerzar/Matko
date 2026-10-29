@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://xtbe65v6lrmd"]
 
 [ext_resource type="Script" uid="uid://chxf2ilaef38w" path="res://Scenes/numbers_planet/number_blocks_game.gd" id="1_iclg0"]
+[ext_resource type="AudioStream" uid="uid://o0s7y6hli6h6" path="res://Assets/Audio/SynthWave.mp3" id="2_6mf5p"]
 
 [node name="NumberBlocksGame" type="Control" unique_id=1941983573]
 layout_mode = 3
@@ -59,3 +60,8 @@ layout_mode = 2
 [node name="CheckAnswerButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1606239869]
 layout_mode = 2
 text = "Preveri odgovor"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1784988614]
+stream = ExtResource("2_6mf5p")
+volume_db = -10.0
+autoplay = true

@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dhnthuoqc56fp" path="res://Assets/Sprites/characters/character-g.glb" id="13_sav6f"]
 [ext_resource type="Script" uid="uid://ce63hlrufvksm" path="res://Scenes/numbers_planet/stars.gd" id="14_dh6xy"]
 [ext_resource type="PackedScene" uid="uid://c3y4gpt8ijypl" path="res://Assets/Sprites/space/alien.glb" id="14_l46qn"]
+[ext_resource type="AudioStream" uid="uid://o0s7y6hli6h6" path="res://Assets/Audio/SynthWave.mp3" id="19_lwf1b"]
 
 [sub_resource type="Environment" id="Environment_tftmq"]
 background_mode = 1
@@ -293,3 +294,8 @@ shape = SubResource("BoxShape3D_f81x7")
 
 [node name="Stars" type="Node3D" parent="." unique_id=1689728942]
 script = ExtResource("14_dh6xy")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=993497273]
+stream = ExtResource("19_lwf1b")
+volume_db = -15.0
+autoplay = true
