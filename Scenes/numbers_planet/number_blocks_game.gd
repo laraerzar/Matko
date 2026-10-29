@@ -1,5 +1,6 @@
 extends Control
 
+#velikost kocke in velikost mreže
 const BLOCK_SIZE := 44.0
 const GRID_STEP := 62.0
 const MAX_BLOCKS := 9
@@ -80,7 +81,7 @@ func _ready() -> void:
 
 	new_question()
 
-
+#novo vprašanje in ponastavitev igre
 func new_question() -> void:
 	clear_blocks()
 
@@ -92,9 +93,9 @@ func new_question() -> void:
 	match question_number:
 		1:
 			target_number = randi_range(1, 99)
-		2,3:
+		2, 3:
 			target_number = randi_range(100, 499)
-		4,5:
+		4, 5:
 			target_number = randi_range(100, 999)
 
 	target_label.text = "Sestavi število: %d" % target_number
@@ -106,8 +107,7 @@ func new_question() -> void:
 
 	update_count()
 
-
-
+#ponastavitev igre in izbris vseh kock
 func clear_blocks() -> void:
 	for block in blocks:
 		if is_instance_valid(block):
@@ -118,12 +118,8 @@ func clear_blocks() -> void:
 
 	counts = {1: 0, 10: 0, 100: 0}
 
-
-func _on_source_gui_input(
-	event: InputEvent,
-	value: int,
-	color: Color
-) -> void:
+#vlečenje kocke iz gumba in ustvarjanje predogleda
+func _on_source_gui_input(event: InputEvent, value: int, color: Color) -> void:
 	if locked or dragging:
 		return
 
@@ -148,16 +144,13 @@ func _on_source_gui_input(
 
 	move_preview()
 
-
-
+#vizualizacija enotskih kock
 func make_block_visual(value: int, color: Color) -> Control:
 	var visual := Control.new()
 
 	var unit_size := 5.0
 	var gap := 1.0
 
-	# Enica: 1 kocka; desetica: 10 v črti;
-	# stotica: 10 vrstic po 10 kock.
 	if value == 1:
 		visual.custom_minimum_size = Vector2(24, 24)
 		visual.size = Vector2(24, 24)
@@ -203,7 +196,6 @@ func make_block_visual(value: int, color: Color) -> Control:
 	return visual
 
 
-
 func _input(event: InputEvent) -> void:
 	if not dragging:
 		return
@@ -227,17 +219,13 @@ func move_preview() -> void:
 
 	preview.position = local_mouse - preview.size / 2.0
 
-
-
+#odlaganje kocke na ploščo
 func drop_block() -> void:
 	var mouse := get_global_mouse_position()
 	var placed := false
 
 	if board.get_global_rect().has_point(mouse):
-		var local_mouse := (
-			board.get_global_transform_with_canvas().affine_inverse()
-			* mouse
-		)
+		var local_mouse := (board.get_global_transform_with_canvas().affine_inverse() * mouse)
 
 		var cols := floori(board.size.x / GRID_STEP)
 		var rows := floori(board.size.y / GRID_STEP)
@@ -276,12 +264,7 @@ func drop_block() -> void:
 	update_count()
 
 
-
-func find_free_cell(
-	target: Vector2i,
-	cols: int,
-	rows: int
-) -> Vector2i:
+func find_free_cell(target: Vector2i, cols: int, rows: int) -> Vector2i:
 	var best := Vector2i(-1, -1)
 	var best_distance := 2147483647
 
@@ -300,12 +283,8 @@ func find_free_cell(
 
 	return best
 
-
-func create_block(
-	cell: Vector2i,
-	value: int,
-	color: Color
-) -> void:
+#ustvarjanje kocke na plošči in dodajanje v seznam kock
+func create_block(cell: Vector2i, value: int, color: Color) -> void:
 	var block := make_block_visual(value, color)
 
 	block.position = Vector2(
@@ -324,11 +303,8 @@ func create_block(
 	blocks.append(block)
 	used_cells[cell] = block
 
-
-func _on_block_gui_input(
-	event: InputEvent,
-	block: Control
-) -> void:
+#premikanje kock, ki so že na plošči
+func _on_block_gui_input(event: InputEvent, block: Control) -> void:
 	if locked or dragging:
 		return
 
@@ -360,7 +336,7 @@ func _on_block_gui_input(
 	move_preview()
 	update_count()
 
-
+#premik obstoječe kocke na novo mesto
 func finish_dragged_block(cell: Vector2i) -> void:
 	if not is_instance_valid(dragged_block):
 		return
@@ -425,38 +401,34 @@ func update_count() -> void:
 		% [counts[100], counts[10], counts[1]]
 	)
 
-
+#stilizacija igre in barv
 func apply_colors() -> void:
-	# Ozadje celotne igre
-	RenderingServer.set_default_clear_color(
-		Color("#E8F5FF")
-	)
+	RenderingServer.set_default_clear_color(Color("#0e0d4d"))
 
 	# Plošča za sestavljanje števil
 	var board_style := StyleBoxFlat.new()
 	board_style.bg_color = Color("#FFFFFF")
-	board_style.border_color = Color("#8ED8FF")
+	board_style.border_color = Color("#42E8F5")
 	board_style.set_border_width_all(3)
 	board_style.set_corner_radius_all(18)
 	board.add_theme_stylebox_override(
 		"panel", board_style
 	)
 
-	# Besedila
 	prompt_label.add_theme_color_override(
-		"font_color", Color("#35618D")
+		"font_color", Color("#D5E9FF")
 	)
 	target_label.add_theme_color_override(
-		"font_color", Color("#7B61C9")
+		"font_color", Color("#C5A3FF")
 	)
 	progress_label.add_theme_color_override(
-	"font_color", Color("#E58B25")
+	"font_color", Color("#FFC66D")
 	)
 	count_label.add_theme_color_override(
-		"font_color", Color("#35618D")
+		"font_color", Color("#B8DFFF")
 	)
 	feedback_label.add_theme_color_override(
-		"font_color", Color("#269B69")
+		"font_color", Color("#62F5B0")
 	)
 
 
@@ -486,6 +458,7 @@ func style_button(button: Button, color_hex: String) -> void:
 	button.add_theme_color_override("font_color", Color("#FFFFFF"))
 	button.add_theme_font_size_override("font_size", 16)
 
+#vračanje na planet
 func return_to_planet() -> void:
 	GameState.has_played_number_blocks = true
 	get_tree().change_scene_to_file("res://Scenes/numbers_planet/numbers_planet.tscn")

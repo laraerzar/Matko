@@ -13,8 +13,20 @@
 [ext_resource type="PackedScene" uid="uid://bqao5gbgun8vt" path="res://Assets/Sprites/space/rail.glb" id="6_tejkw"]
 [ext_resource type="PackedScene" uid="uid://c07jlgga24kql" path="res://Assets/Sprites/space_station/table.glb" id="7_05q2t"]
 [ext_resource type="PackedScene" uid="uid://ceimlp3t2utvg" path="res://Assets/Sprites/space_station/table-display-planet.glb" id="8_g1ukb"]
+[ext_resource type="PackedScene" uid="uid://yxeouyv2qx4f" path="res://Assets/Sprites/space/astronautB.glb" id="11_dspic"]
+[ext_resource type="PackedScene" uid="uid://bx7dqp8jujidv" path="res://Assets/Sprites/space/astronautA.glb" id="12_lwf1b"]
+[ext_resource type="PackedScene" uid="uid://dhnthuoqc56fp" path="res://Assets/Sprites/characters/character-g.glb" id="13_sav6f"]
+[ext_resource type="Script" uid="uid://ce63hlrufvksm" path="res://Scenes/numbers_planet/stars.gd" id="14_dh6xy"]
+[ext_resource type="PackedScene" uid="uid://c3y4gpt8ijypl" path="res://Assets/Sprites/space/alien.glb" id="14_l46qn"]
 
 [sub_resource type="Environment" id="Environment_tftmq"]
+background_mode = 1
+background_color = Color(0.05490196, 0.050980393, 0.3019608, 1)
+ambient_light_color = Color(0.7058824, 0.8156863, 0.9529412, 1)
+tonemap_mode = 1
+tonemap_exposure = 0.85
+glow_enabled = true
+glow_intensity = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1mms"]
 
@@ -28,25 +40,50 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tftmq"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f81x7"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oltf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_05q2t"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikl5i"]
+albedo_color = Color(1.294, 1.055, 0.44, 1)
+emission_enabled = true
+emission = Color(1, 0.7019608, 0.2784314, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh6xy"]
+albedo_color = Color(1.294, 1.055, 0.44, 1)
+emission_enabled = true
+emission = Color(1, 0.7019608, 0.2784314, 1)
+
 [node name="NumbersPlanet" type="Node3D" unique_id=1840829943]
 script = ExtResource("1_0prxf")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=821557479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5196, 6.4940796, 4.5179596)
+visible = false
+light_energy = 5.0
+omni_range = 15.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1022103395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5196, 6.3988647, 21.31456)
+visible = false
+light_energy = 5.0
+omni_range = 15.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1410002749]
 environment = SubResource("Environment_tftmq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1438526273]
-transform = Transform3D(1, 1.5238793e-08, -1.7418022e-07, 0, 0.9961947, 0.08715574, 1.7484555e-07, -0.08715574, 0.9961947, 14.990079, 36.91263, 17.86023)
+transform = Transform3D(-0.70710677, 0.1830127, -0.68301266, 0, 0.9659258, 0.25881904, 0.70710677, 0.1830127, -0.68301266, -11.869978, 13.086716, -11.721264)
+light_energy = 1.5
 
 [node name="Player" parent="." unique_id=1446420488 instance=ExtResource("1_857gh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
 script = ExtResource("3_g1ukb")
 
 [node name="Camera3D" type="Camera3D" parent="Player" unique_id=452524896]
-transform = Transform3D(-0.7715369, 0.30797556, -0.55667037, -0.015114226, 0.8658935, 0.49999997, 0.6360051, 0.3941821, -0.6634139, -7.870267, 6.355336, -4.136467)
+transform = Transform3D(-0.8460969, 0.25539267, -0.46786183, -0.015114226, 0.8658935, 0.49999997, 0.5328149, 0.4301198, -0.72876966, -4.3520613, 6.4227343, -6.865001)
 script = ExtResource("3_05q2t")
 
 [node name="Room" type="Node3D" parent="." unique_id=1732614656]
@@ -143,6 +180,39 @@ shape = SubResource("BoxShape3D_tftmq")
 
 [node name="FrontDesk" type="Node3D" parent="Room" unique_id=2093408445]
 
+[node name="astronautB2" parent="Room/FrontDesk" unique_id=1171984714 instance=ExtResource("11_dspic")]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 28.946325, -0.6, 12.310548)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FrontDesk/astronautB2" unique_id=988671035]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/astronautB2/StaticBody3D" unique_id=405983437]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="astronautA2" parent="Room/FrontDesk" unique_id=185226678 instance=ExtResource("12_lwf1b")]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 25.706688, -0.6, -1.265929)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FrontDesk/astronautA2" unique_id=1383239733]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/astronautA2/StaticBody3D" unique_id=2000217870]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="character-g2" parent="Room/FrontDesk" unique_id=1200255054 instance=ExtResource("13_sav6f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.574, -0.6, 4.935342)
+
+[node name="character-g3" parent="Room/FrontDesk" unique_id=1145269961 instance=ExtResource("13_sav6f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.574, -0.6, 20.34684)
+
+[node name="alien2" parent="Room/FrontDesk" unique_id=1843386838 instance=ExtResource("14_l46qn")]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 28.813522, -0.6, -2.9114656)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/FrontDesk/alien2" unique_id=1542552155]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/alien2/StaticBody3D" unique_id=528053786]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
 [node name="TableCollision" type="StaticBody3D" parent="Room/FrontDesk" unique_id=1456038206]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/FrontDesk/TableCollision" unique_id=2050896154]
@@ -150,7 +220,7 @@ transform = Transform3D(4, 0, 0, 0, 5, 0, 0, 0, 20, 26.336199, 0.24039304, 12.32
 shape = SubResource("BoxShape3D_8oltf")
 
 [node name="character" parent="Room/FrontDesk" unique_id=837203712 instance=ExtResource("5_tejkw")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.998537, -0.6, 12.604437)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.99756, -0.6, 12.604437)
 
 [node name="Area3D" type="Area3D" parent="Room/FrontDesk/character" unique_id=817818278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1055685e-09, 2.1501465, 2.644806)
@@ -178,3 +248,39 @@ transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 25
 
 [node name="table4" parent="Room/FrontDesk" unique_id=253064090 instance=ExtResource("7_05q2t")]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 25.57167, -0.6, 20.119106)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Room" unique_id=1911535770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 2, 12.6)
+light_color = Color(1, 0.7019608, 0.2784314, 1)
+light_energy = 10.338
+omni_range = 5.563
+
+[node name="Guide" type="Node3D" parent="Room" unique_id=226434288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 12.6)
+
+[node name="Arrow" type="CSGCylinder3D" parent="Room/Guide" unique_id=599745458]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 5, 0)
+radius = 0.35
+height = 0.7
+sides = 12
+cone = true
+material = SubResource("StandardMaterial3D_ikl5i")
+
+[node name="Ring" type="CSGTorus3D" parent="Room/Guide" unique_id=2056520024]
+transform = Transform3D(0.99999845, 0, 0.0017453283, 0, 0.3, 0, -0.0017453283, 0, 0.99999845, 0, 0, 0)
+inner_radius = 2.8
+outer_radius = 3.0
+sides = 32
+material = SubResource("StandardMaterial3D_dh6xy")
+
+[node name="alien2" parent="Room" unique_id=1146501857 instance=ExtResource("14_l46qn")]
+transform = Transform3D(-3.4322596, 0, -2.0541651, 0, 4, 0, 2.0541651, 0, -3.4322596, 25.204847, -0.6, 19.667543)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/alien2" unique_id=80248670]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/alien2/StaticBody3D" unique_id=1049328487]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="Stars" type="Node3D" parent="." unique_id=1689728942]
+script = ExtResource("14_dh6xy")
