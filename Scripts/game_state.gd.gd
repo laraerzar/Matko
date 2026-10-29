@@ -78,3 +78,5 @@ func _change_scene(path: String) -> void:
 		push_warning("Scena ne obstaja, nalagam začasno: " + path)
 		target = PLACEHOLDER_SCENE
 	get_tree().change_scene_to_file(target)
+
+var has_played_number_blocks: bool = false
