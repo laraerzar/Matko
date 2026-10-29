@@ -10,18 +10,21 @@ func _ready() -> void:
 		push_warning("Floor Generator: tile_scene ni nastavljena!")
 		return
 
+	generate_floor(Vector3.ZERO)
+
+	generate_rail()
+
+func generate_floor(offset: Vector3) -> void:
 	for x in range(columns):
 		for z in range(rows):
 			var tile = tile_scene.instantiate()
 			add_child(tile)
 
 			tile.position = Vector3(
-				x * tile_size,
+				x * tile_size + offset.x,
 				-0.6,
-				z * tile_size
+				z * tile_size + offset.z
 			)
-
-	generate_rail()
 
 
 @export var rail_scene: PackedScene
