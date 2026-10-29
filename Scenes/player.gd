@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	input = input.normalized()
 
 	var direction := Vector3(input.x, 0.0, input.y)
+
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	if is_on_floor():
