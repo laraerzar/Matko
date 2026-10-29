@@ -49,8 +49,8 @@ func generate_rail() -> void:
 	for i in range(1, count_x - 1):
 		var x := left + i * rail_spacing
 
-		place_rail(Vector3(x, 0, front), 0.0)
-		place_rail(Vector3(x, 0, back), 0.0)
+		place_rail(Vector3(x, -0.3, front), 0.0)
+		place_rail(Vector3(x, -0.3, back), 0.0)
 
 	# Leva in desna stran
 	var count_z := int(floor((back - front) / rail_spacing)) + 1
@@ -58,8 +58,8 @@ func generate_rail() -> void:
 	for i in range(1, count_z - 1):
 		var z := front + i * rail_spacing
 
-		place_rail(Vector3(left, 0, z + rail_offset_z*2), PI / 2.0)
-		place_rail(Vector3(right, 0, z + rail_offset_z*2), PI / 2.0)
+		place_rail(Vector3(left, -0.3, z + rail_offset_z*2), PI / 2.0)
+		place_rail(Vector3(right, -0.3, z + rail_offset_z*2), PI / 2.0)
 
 
 func place_rail(pos: Vector3, rot_y: float) -> void:

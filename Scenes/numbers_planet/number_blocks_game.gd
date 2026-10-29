@@ -407,7 +407,7 @@ func check_answer() -> void:
 
 		if correct_count >= questions_to_win:
 			feedback_label.text = "Odlično! Računalnik je popravljen!"
-			get_tree().change_scene_to_file("res://Scenes/numbers_planet/numbers_planet.tscn")
+			return_to_planet()
 		else:
 			await get_tree().create_timer(1.0).timeout
 			new_question()
@@ -485,3 +485,7 @@ func style_button(button: Button, color_hex: String) -> void:
 	button.add_theme_stylebox_override("pressed", pressed)
 	button.add_theme_color_override("font_color", Color("#FFFFFF"))
 	button.add_theme_font_size_override("font_size", 16)
+
+func return_to_planet() -> void:
+	GameState.has_played_number_blocks = true
+	get_tree().change_scene_to_file("res://Scenes/numbers_planet/numbers_planet.tscn")

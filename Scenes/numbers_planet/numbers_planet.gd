@@ -5,6 +5,8 @@ extends Node3D
 @onready var character_hint_desk: Label3D = $Room/FrontDesk/character/Label3D
 @onready var character_hint_computer: Label3D = $Room/GameComputer/Label3D
 @onready var player: CharacterBody3D = $Player
+@onready var gate: Node3D = $Room/Gate
+@onready var gate_area: Area3D = $Room/Gate/Area3D
 
 
 var player_near_character: bool = false
@@ -14,10 +16,17 @@ var player_near_computer: bool = false
 func _ready() -> void:
 	character_hint_desk.visible = false
 	character_hint_computer.visible = false
+
+	gate.visible = GameState.has_played_number_blocks
+
 	character_area.body_entered.connect(_on_character_body_entered)
 	character_area.body_exited.connect(_on_character_body_exited)
 	computer_area.body_entered.connect(_on_computer_body_entered)
 	computer_area.body_exited.connect(_on_computer_body_exited)
+	gate_area.body_entered.connect(_on_gate_body_entered)
+
+	if GameState.has_played_number_blocks:
+		player.position = Vector3(15.5, 0, 22.5) 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +54,10 @@ func _on_computer_body_exited(body: Node3D) -> void:
 	if body == player:
 		character_hint_computer.visible = false
 		player_near_computer = false
+
+func _on_gate_body_entered(body: Node3D) -> void:
+	if body == player && GameState.has_played_number_blocks:
+		get_tree().call_deferred("change_scene_to_file", "res://Scenes/space_station/space_station.tscn")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
