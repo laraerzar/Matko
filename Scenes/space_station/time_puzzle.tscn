@@ -71,10 +71,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Težko"
 
-[node name="Tezko2" type="Button" parent="VBoxContainer/Levels" unique_id=1179079844]
+[node name="Potovanje" type="Button" parent="VBoxContainer/Levels" unique_id=1179079844]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "Potovanje"
+
+[node name="Besedno" type="Button" parent="VBoxContainer/Levels" unique_id=1979176809]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Besedno"
 
 [node name="ProgressLabel" type="Label" parent="VBoxContainer" unique_id=1781098004]
 layout_mode = 2

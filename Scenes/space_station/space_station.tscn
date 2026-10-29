@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cbfvwkob5ks2y" path="res://Assets/Sprites/space_station/computer-system.glb" id="3_6v3rk"]
 [ext_resource type="Script" uid="uid://dcc8io5wg7qox" path="res://Scenes/space_station/camera_3d.gd" id="3_cv1bm"]
 [ext_resource type="PackedScene" uid="uid://dkbmx1jwdqkqq" path="res://Assets/Sprites/space_station/floor.glb" id="5_ei3tb"]
+[ext_resource type="AudioStream" uid="uid://b13jkb7fy31ms" path="res://Assets/Audio/threeTone2.ogg" id="6_7ky2t"]
 [ext_resource type="PackedScene" uid="uid://d0yx3v7kxnt06" path="res://Assets/Sprites/space_station/floor-detail.glb" id="6_jd7h4"]
+[ext_resource type="AudioStream" uid="uid://cqnsebhg7kqtl" path="res://Assets/Audio/powerUp11.ogg" id="7_3sjrf"]
 [ext_resource type="PackedScene" uid="uid://c5d0ysct7rah" path="res://Assets/Sprites/space_station/floor-panel-corner.glb" id="7_p7k5i"]
 [ext_resource type="PackedScene" uid="uid://d08kbowhdc5oe" path="res://Assets/Sprites/space_station/floor-panel-straight.glb" id="8_rkbkq"]
 [ext_resource type="PackedScene" uid="uid://b4ppbkx8x1k8k" path="res://Assets/Sprites/space_station/rail.glb" id="9_ysbb2"]
@@ -22,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://b3esbml54ploe" path="res://Assets/Sprites/space_station/wall-door-wide.glb" id="18_74cvs"]
 [ext_resource type="Texture2D" uid="uid://xvr50m1scrms" path="res://Assets/Sprites/planets/planet07.png" id="19_14j7a"]
 [ext_resource type="Script" uid="uid://wy8vq01gmx63" path="res://Scenes/space_station/route_map.gd" id="22_7mdpg"]
+[ext_resource type="AudioStream" uid="uid://3io4qkwnw6yh" path="res://Assets/Music/starwalk.mp3" id="23_14j7a"]
+[ext_resource type="AudioStream" uid="uid://bmlgcsxbqokn6" path="res://Assets/Audio/spaceEngine_003.ogg" id="24_px7c3"]
 
 [sub_resource type="Environment" id="Environment_8mjrn"]
 background_mode = 1
@@ -121,7 +125,7 @@ omni_range = 5.563
 [node name="Sign" type="Label3D" parent="Terminal" unique_id=1625286947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 billboard = 1
-text = "VOZOVNICE"
+text = "IZBIRA LADJE"
 font_size = 72
 outline_size = 16
 
@@ -141,6 +145,12 @@ inner_radius = 2.8
 outer_radius = 3.0
 sides = 32
 material = SubResource("StandardMaterial3D_b7287")
+
+[node name="TerminalSound" type="AudioStreamPlayer3D" parent="Terminal" unique_id=1818094833]
+stream = ExtResource("6_7ky2t")
+
+[node name="FinishedSound" type="AudioStreamPlayer3D" parent="Terminal" unique_id=1683161704]
+stream = ExtResource("7_3sjrf")
 
 [node name="Room" type="Node3D" parent="." unique_id=1240509255]
 
@@ -807,6 +817,9 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10, 0, -25)
 [node name="Ship3" parent="Room/Ships" unique_id=266365181 instance=ExtResource("12_mwjjo")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 5, 0, -25)
 
+[node name="ShipSound" type="AudioStreamPlayer3D" parent="Room/Ships" unique_id=1075566851]
+stream = ExtResource("24_px7c3")
+
 [node name="Floor2" type="CSGBox3D" parent="Room" unique_id=956028484]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017560601, -0.4, -9.526001)
 transparency = 1.0
@@ -884,7 +897,7 @@ script = ExtResource("22_7mdpg")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.043137256, 0.0627451, 0.14901961, 0.75686276)
+color = Color(0.043137256, 0.0627451, 0.14901961, 0.90588236)
 
 [node name="Center" type="CenterContainer" parent="RouteMapLayer/RouteMap" unique_id=282106650]
 layout_mode = 0
@@ -905,3 +918,8 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
+
+[node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=1748362519]
+stream = ExtResource("23_14j7a")
+volume_db = -10.0
+autoplay = true

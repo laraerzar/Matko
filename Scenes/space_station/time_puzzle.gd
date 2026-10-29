@@ -6,10 +6,11 @@ signal puzzle_completed(mistakes: int)
 @onready var progress_label: Label = $VBoxContainer/ProgressLabel
 @onready var options: HBoxContainer = $VBoxContainer/Options
 @onready var levels: HBoxContainer = $VBoxContainer/Levels
+@onready var diff_label: Label = $VBoxContainer/DiffLabel
 
 # 0 = Lahko, 1 = Srednje, 2 = Težko, 3 = Potovanje
-@export_enum("Lahko", "Srednje", "Težko", "Potovanje") var difficulty: int = 0
-@export var questions_to_win: int = 5
+@export_enum("Lahko", "Srednje", "Težko", "Potovanje", "Obratno") var difficulty: int = 0
+@export var questions_to_win: int = 10
 
 var easy_minutes: Array[int] = [0, 15, 30, 45]
 var correct_index: int = 0
@@ -17,7 +18,12 @@ var correct_count: int = 0
 var mistakes: int = 0
 var locked: bool = false
 var round_id: int = 0
-var level_plan: Array[int] = []   # težavnost za vsako vprašanje; prazno = običajno
+var level_plan: Array[int] = []
+
+const HOURS_NOM: Array[String] = ["", "ena", "dve", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet", "deset", "enajst", "dvanajst"]
+const HOURS_ACC: Array[String] = ["", "eno", "dve", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet", "deset", "enajst", "dvanajst"]
+const HOURS_GEN: Array[String] = ["", "enih", "dveh", "treh", "štirih", "petih", "šestih", "sedmih", "osmih", "devetih", "desetih", "enajstih", "dvanajstih"]
+
 
 func _ready() -> void:
 	for i in options.get_child_count():
@@ -43,7 +49,8 @@ func set_difficulty(level: int) -> void:
 func set_plan(plan: Array) -> void:
 	level_plan.assign(plan)
 	questions_to_win = level_plan.size()
-	levels.visible = false   # gumbi za težavnost se skrijejo
+	levels.visible = false
+	diff_label.visible = false
 	start_round()
 
 func update_progress() -> void:
@@ -62,9 +69,10 @@ func new_question() -> void:
 	var answers: Array[Vector2i]
 	if difficulty == 3:
 		answers = journey_question()
+	elif difficulty == 4:
+		answers = word_question()
 	else:
 		answers = clock_question()
-	# answers[0] is the correct time, the rest are wrong.
 	correct_index = randi_range(0, options.get_child_count() - 1)
 	var wrong := 1
 	for i in options.get_child_count():
@@ -82,6 +90,8 @@ func random_minute() -> int:
 		0:
 			return easy_minutes.pick_random()
 		1:
+			return randi_range(0, 11) * 5
+		4:
 			return randi_range(0, 11) * 5
 		_:
 			return randi_range(0, 59)
@@ -102,9 +112,9 @@ func clock_question() -> Array[Vector2i]:
 
 func journey_question() -> Array[Vector2i]:
 	var dep := Vector2i(randi_range(1, 12), randi_range(0, 11) * 5)
-	var duration := randi_range(3, 36) * 5   # 15 to 180 minutes
+	var duration := randi_range(3, 36) * 5
 	var arrival_total := dep.x * 60 + dep.y + duration
-	time_label.text = "%02d:%02d" % [dep.x, dep.y]
+	time_label.text = "Potovanje" % [dep.x, dep.y]
 	prompt_label.text = "Ladja odpotuje ob %02d:%02d in potuje %s. Kdaj prispe?" % [
 			dep.x, dep.y, duration_text(duration)]
 	var result: Array[Vector2i] = [minutes_to_time(arrival_total)]
@@ -162,3 +172,58 @@ func _on_option_pressed(index: int) -> void:
 	else:
 		mistakes += 1
 		prompt_label.text = "Poskusi znova"
+		
+func time_in_words(h: int, m: int) -> String:
+	var next := h % 12 + 1
+	var text := ""
+	match m:
+		0:
+			return "Ura je %s" % HOURS_NOM[h]
+		5:
+			text = "pet čez %s" % HOURS_ACC[h]
+		10:
+			text = "deset čez %s" % HOURS_ACC[h]
+		15:
+			text = "četrt čez %s" % HOURS_ACC[h]
+		20:
+			text = "dvajset čez %s" % HOURS_ACC[h]
+		25:
+			text = "pet do pol %s" % HOURS_GEN[next]
+		30:
+			text = "pol %s" % HOURS_GEN[next]
+		35:
+			text = "pet čez pol %s" % HOURS_GEN[next]
+		40:
+			text = "dvajset do %s" % HOURS_GEN[next]
+		45:
+			text = "četrt do %s" % HOURS_GEN[next]
+		50:
+			text = "deset do %s" % HOURS_GEN[next]
+		55:
+			text = "pet do %s" % HOURS_GEN[next]
+	return text.substr(0, 1).to_upper() + text.substr(1)
+
+
+func word_question() -> Array[Vector2i]:
+	var target := random_time()
+	time_label.text = time_in_words(target.x, target.y)
+	time_label.add_theme_font_size_override("font_size", 48)
+	prompt_label.text = "Katera ura to pokaže?"
+	var result: Array[Vector2i] = [target]
+	var next_hour := target.x % 12 + 1
+	var prev_hour := (target.x + 10) % 12 + 1
+	var tricky: Array[Vector2i] = [
+		Vector2i(next_hour, target.y),
+		Vector2i(prev_hour, target.y),
+		Vector2i(target.x, (target.y + 30) % 60),
+		Vector2i(target.x, (60 - target.y) % 60),
+	]
+	tricky.shuffle()
+	for t: Vector2i in tricky:
+		if result.size() < options.get_child_count() and not (t in result):
+			result.append(t)
+	while result.size() < options.get_child_count():
+		var t := random_time()
+		if not (t in result):
+			result.append(t)
+	return result

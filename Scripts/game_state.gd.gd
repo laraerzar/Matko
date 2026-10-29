@@ -11,7 +11,7 @@ const PLANETS: Dictionary = {
 	"stevila": {
 		"name": "Planet števil",
 		"desc": "Števila in računanje",
-		"texture": "res://Assets/Sprites/planets/planet07.png",
+		"texture": "res://Assets/Sprites/planets/planet06.png",
 		"scene": "res://Scenes/planet_stevila.tscn",
 	},
 	"merske_enote": {

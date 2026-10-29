@@ -12,25 +12,28 @@ extends Node3D
 @onready var route_layer: CanvasLayer = $RouteMapLayer
 @onready var route_map = $RouteMapLayer/RouteMap
 @onready var ships: Node3D = $Room/Ships
+@onready var ship_sound: AudioStreamPlayer3D = $Room/Ships/ShipSound
+@onready var terminal_sound: AudioStreamPlayer3D = $Terminal/TerminalSound
+@onready var finished_sound: AudioStreamPlayer3D = $Terminal/FinishedSound
+
 
 # Za testiranje postaje samo zase (F6): kateri obisk naj simulira.
 @export_range(1, 2) var debug_visit: int = 1
 
 var intro_by_visit: Dictionary = {
 	1: [
-		"Matko: Računalnik je popravljen! Zdaj lahko kupim vozovnico za tržnico.",
+		"Matko: Računalnik je popravljen! Zdaj lahko izberem ladjo za obisk tržnice. Hmm... kdaj je pravilen čas odhoda?",
 		"Premikaj se s puščicami ali WASD. Pritisni E ob računalniku.",
 	],
 	2: [
-		"Matko: Zdaj pa še zadnja vozovnica, do prijatelja!",
+		"Matko: Zdaj pa še zadnja ladja, do prijatelja! Ampak najprej moram ugotoviti pravi čas odhoda.",
 		"Pritisni E ob računalniku.",
 	],
 }
 
-# Težavnost vsakega vprašanja: 0 Lahko, 1 Srednje, 2 Težko, 3 Potovanje
 var plan_by_visit: Dictionary = {
-	1: [0, 0, 1, 1, 1],
-	2: [2, 2, 3, 3, 3],
+	1: [0, 0, 0, 1, 1, 1, 2, 2, 2, 2],   # Lahko, Srednje, Težko
+	2: [3, 3, 3, 3, 4, 4, 4, 4, 4, 4],   # Potovanje and Obratno
 }
 
 var visit: int = 1
@@ -119,6 +122,8 @@ func _unhandled_input(event: InputEvent) -> void:
 # ---------- uganka ----------
 
 func open_puzzle() -> void:
+	if terminal_sound != null:
+		terminal_sound.play()
 	puzzle_open = true
 	set_hint_visible(false)
 	player.set_frozen(true)
@@ -131,6 +136,8 @@ func close_puzzle() -> void:
 	player.set_frozen(false)
 
 func _on_puzzle_completed(mistakes: int) -> void:
+	if finished_sound != null:
+		finished_sound.play()
 	solved = true
 	guide.visible = false
 	GameState.total_mistakes += mistakes
@@ -162,6 +169,8 @@ func matko_boards() -> void:
 	model.visible = false
 
 func ship_departs(planet_id: String) -> void:
+	if ship_sound != null:
+		ship_sound.play()
 	var index := GameState.PLANET_ORDER.find(planet_id)
 	if index < 0 or index >= ships.get_child_count():
 		return
