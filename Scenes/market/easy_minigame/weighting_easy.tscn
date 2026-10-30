@@ -317,11 +317,10 @@ mouse_filter = 2
 
 [node name="AppleBowlView" parent="FruitTray" unique_id=787293552 instance=ExtResource("3_orsuc")]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 535.0
-offset_right = 168.0
-offset_bottom = 635.0
-scale = Vector2(1.5, 1.5)
+offset_left = 65.0
+offset_top = 525.0
+offset_right = 225.0
+offset_bottom = 685.0
 mouse_filter = 0
 
 [node name="AppleMassLabel" type="Label" parent="." unique_id=1791349818]

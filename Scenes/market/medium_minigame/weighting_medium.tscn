@@ -292,7 +292,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_1em3m")
 text = "Začni!"
 
 [node name="BalanceVisual" type="Control" parent="." unique_id=916217410]
-visible = false
 custom_minimum_size = Vector2(800, 400)
 anchors_preset = 0
 offset_left = 184.0
@@ -316,7 +315,6 @@ offset_right = 877.0
 offset_bottom = 519.0
 
 [node name="FruitTray" type="Control" parent="." unique_id=478906917]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -337,17 +335,16 @@ theme_override_font_sizes/font_size = 24
 
 [node name="AppleBowlView" parent="FruitTray" unique_id=787293552 instance=ExtResource("3_lej3m")]
 layout_mode = 0
-offset_left = 10.000002
-offset_top = 530.0
-offset_right = 110.0
-offset_bottom = 630.0
-scale = Vector2(1.5, 1.5)
+offset_left = 5.0
+offset_top = 525.0
+offset_right = 165.0
+offset_bottom = 685.0
 mouse_filter = 0
 
 [node name="AppleMassLabel" type="Label" parent="FruitTray/AppleBowlView" unique_id=2037770968]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 24
 
 [node name="CheckButton" type="Button" parent="." unique_id=338833577]
 visible = false

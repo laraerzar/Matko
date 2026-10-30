@@ -639,7 +639,7 @@ transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, -7
 
 [node name="InteractionArea" type="Area3D" parent="Room/WeightingMedium/cash-register3" unique_id=1355751665 node_paths=PackedStringArray("station_label")]
 script = ExtResource("10_r6b4k")
-minigame_scene_path = "uid://dos0sjyo2bg8n"
+minigame_scene_path = "uid://cy0rxvdy27l6x"
 station_type = 1
 station_label = NodePath("../../MediumStationLabel")
 
@@ -662,7 +662,7 @@ transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, 7,
 
 [node name="InteractionArea" type="Area3D" parent="Room/WeightingHard/cash-register3" unique_id=1042479048 node_paths=PackedStringArray("station_label")]
 script = ExtResource("10_r6b4k")
-minigame_scene_path = "uid://ymd5rqo0ucge"
+minigame_scene_path = "uid://bid0mjpwkhj3r"
 station_type = 2
 station_label = NodePath("../../HardStationLabel")
 
