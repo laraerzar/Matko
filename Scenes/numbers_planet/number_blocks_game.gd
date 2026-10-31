@@ -6,7 +6,7 @@ const GRID_STEP := 62.0
 const MAX_BLOCKS := 9
 
 @export_range(1, 999) var target_number: int = 243
-@export var questions_to_win: int = 5
+@export var questions_to_win: int = 5	
 var question_number := 0
 
 @onready var board: Panel = $CenterContainer/VBoxContainer/Board
@@ -21,6 +21,7 @@ var question_number := 0
 @onready var hundreds_button: Button = $CenterContainer/VBoxContainer/ItemBar/HundredsButton
 
 @onready var check_button: Button = $CenterContainer/VBoxContainer/CheckAnswerButton
+@onready var FinishedSound: AudioStreamPlayer = $FinishedSound
 
 var counts := {1: 0, 10: 0, 100: 0}
 var used_cells: Dictionary = {}
@@ -383,6 +384,11 @@ func check_answer() -> void:
 
 		if correct_count >= questions_to_win:
 			feedback_label.text = "Odlično! Računalnik je popravljen!"
+			
+			if FinishedSound:
+				FinishedSound.play()
+				await FinishedSound.finished
+
 			return_to_planet()
 		else:
 			await get_tree().create_timer(1.0).timeout

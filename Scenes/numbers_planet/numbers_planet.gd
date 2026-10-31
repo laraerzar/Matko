@@ -10,12 +10,14 @@ extends Node3D
 @onready var hint_light: OmniLight3D = $Room/OmniLight3D
 @onready var hint_arrow: Node3D = $Room/Guide
 @onready var arrow: Node3D = $Room/Guide/Arrow
+@onready var computer_sound: AudioStreamPlayer3D = $Room/GameComputer/ComputerSound
 
 
 var player_near_character: bool = false
 var player_near_computer: bool = false
 var has_spoken_to_character: bool = false
 var arrow_tween: Tween
+var opening_game := false
 
 func _ready() -> void:
 	character_hint_desk.visible = false
@@ -73,11 +75,17 @@ func _on_computer_body_exited(body: Node3D) -> void:
 #prehod na naslednjo sceno
 func _on_gate_body_entered(body: Node3D) -> void:
 	if body == player && GameState.has_played_number_blocks:
-		get_tree().call_deferred("change_scene_to_file", "res://Scenes/space_station/space_station.tscn")
+		GameState.finish_planet("stevila", 0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
-		if event.physical_keycode == KEY_E and player_near_computer:
+		if event.physical_keycode == KEY_E and player_near_computer and not opening_game:
+			opening_game = true
+
+			if computer_sound != null:
+				computer_sound.play()
+				await computer_sound.finished
+
 			open_computer_game()
 
 #mini igra
