@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://c8fp8vwjd21ea" path="res://Assets/Sprites/market/mini_market/shelf-end.glb" id="22_upevu"]
 [ext_resource type="PackedScene" uid="uid://cp3mp77vajafd" path="res://Assets/Sprites/market/mini_market/display-bread.glb" id="23_b0urs"]
 [ext_resource type="PackedScene" uid="uid://q3xk4kywflb2" path="res://Assets/Sprites/market/mini_market/freezers-standing.glb" id="24_010vy"]
+[ext_resource type="Script" uid="uid://q8ikdlqcmjv4" path="res://Scenes/market/market_scene/exit_gate.gd" id="25_r5bvj"]
+[ext_resource type="Script" uid="uid://wy8vq01gmx63" path="res://Scenes/space_station/route_map.gd" id="26_17c4t"]
 
 [sub_resource type="Environment" id="Environment_0m24b"]
 background_mode = 1
@@ -69,6 +71,10 @@ func _process(_delta: float) -> void:
 [sub_resource type="BoxShape3D" id="BoxShape3D_ysbb2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pt5nn"]
+size = Vector3(0.2210083, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s65wv"]
+size = Vector3(0.8071289, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wsi75"]
 
@@ -91,6 +97,12 @@ func _process(_delta: float) -> void:
 [sub_resource type="BoxShape3D" id="BoxShape3D_w465o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kr6l3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6b4k"]
+size = Vector3(0.1665039, 1, 0.16119385)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5bvj"]
+size = Vector3(0.1643219, 1, 0.1809082)
 
 [node name="Market" type="Node3D" unique_id=1687185113]
 
@@ -737,9 +749,13 @@ shape = SubResource("BoxShape3D_ysbb2")
 
 [node name="RightWallCollision" type="StaticBody3D" parent="." unique_id=281241054]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWallCollision" unique_id=54895451]
-transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 4, 0, 2.8, -9)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RightWallCollision" unique_id=211284773]
+transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 4, -9.728589, 2.8, -9)
 shape = SubResource("BoxShape3D_pt5nn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWallCollision" unique_id=272633157]
+transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 4, 5.652, 2.8, -10)
+shape = SubResource("BoxShape3D_s65wv")
 
 [node name="LeftWallCollision" type="StaticBody3D" parent="." unique_id=631982890]
 
@@ -836,3 +852,54 @@ shape = SubResource("BoxShape3D_w465o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottleShelf" unique_id=33536770]
 transform = Transform3D(1.4, 0, 0, 0, 3.5, 0, 0, 0, 2.8, -8.23, 1.86, -4.005)
 shape = SubResource("BoxShape3D_kr6l3")
+
+[node name="ExitGate" type="Area3D" parent="." unique_id=158596496]
+script = ExtResource("25_r5bvj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitGate" unique_id=944730026]
+transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 5, -5.392, 2.8, -10.258)
+shape = SubResource("BoxShape3D_r6b4k")
+
+[node name="GateBlocker" type="StaticBody3D" parent="." unique_id=1966376103]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GateBlocker" unique_id=225321230]
+transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 5, -5.419, 2.8, -8.728)
+shape = SubResource("BoxShape3D_r5bvj")
+
+[node name="RouteMapLayer" type="CanvasLayer" parent="." unique_id=964284599]
+layer = 10
+
+[node name="RouteMap" type="Control" parent="RouteMapLayer" unique_id=1951550664]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("26_17c4t")
+
+[node name="Dim" type="ColorRect" parent="RouteMapLayer/RouteMap" unique_id=739109744]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.043137256, 0.0627451, 0.14901961, 0.90588236)
+
+[node name="Center" type="CenterContainer" parent="RouteMapLayer/RouteMap" unique_id=1685689963]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 646.0
+
+[node name="VBox" type="VBoxContainer" parent="RouteMapLayer/RouteMap/Center" unique_id=1163094569]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="Label" parent="RouteMapLayer/RouteMap/Center/VBox" unique_id=1042128378]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Izberi pot"
+horizontal_alignment = 1
+
+[node name="Planets" type="HBoxContainer" parent="RouteMapLayer/RouteMap/Center/VBox" unique_id=925742718]
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
