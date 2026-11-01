@@ -126,6 +126,7 @@ script = ExtResource("2_m2lke")
 process_mode = 3
 transform = Transform3D(0.9998986, -0.012832617, 0.006175332, 0.012853574, 0.9999117, -0.003365955, -0.0061315927, 0.003444989, 0.99997526, -0.43522727, 0.03072834, -3.8989058)
 stream = ExtResource("50_gprda")
+volume_db = -10.0
 autoplay = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=900502394]
