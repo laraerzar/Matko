@@ -22,6 +22,10 @@ signal level_completed # sproži se po zadnji stopnji
 @onready var right_mass_label = $RightMassLabel
 @onready var info_label = $InfoLabel
 
+# zvočni efekti
+@onready var correct_sound = $CorrectSound
+@onready var wrong_sound = $WrongSound
+
 # vsi elementi, ki se prikažejo komaj po kliku na gumb Začni
 @onready var game_nodes: Array[CanvasItem] = [
 	balance_visual,
@@ -376,6 +380,8 @@ func _on_check_pressed() -> void:
 		and bananas.size() == int(level["banana_count"])
 	)
 	if correct_counts:
+		correct_sound.play()
+		
 		if level_index == levels.size() - 1:
 			info_label.text = (
 				"Odlično! Vsa naročila so uspešno pripravljena! "
@@ -388,7 +394,9 @@ func _on_check_pressed() -> void:
 			)
 		next_level_button.visible = true
 		return
-
+		
+	wrong_sound.play()
+	
 	if left_mass < target_mass:
 		info_label.text = (
 			"Na tehtnici je premalo sadja. Poskusi znova!"

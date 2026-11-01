@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://la14lmq0awa3" path="res://Scenes/market/easy_minigame/weighting_easy.gd" id="1_orsuc"]
 [ext_resource type="Script" uid="uid://cgw5ee4lxrmrs" path="res://Scenes/market/minigame_assets/balance_visual.gd" id="2_jgphi"]
 [ext_resource type="PackedScene" uid="uid://flcvmbdrfel4" path="res://Scenes/market/minigame_assets/apple_bowl_view.tscn" id="3_orsuc"]
+[ext_resource type="AudioStream" uid="uid://da2rm6qrfhb8x" path="res://Assets/Audio/easy joy.ogg" id="4_jgphi"]
+[ext_resource type="AudioStream" uid="uid://cruo2pwp85f6t" path="res://Assets/Audio/powerUp2.ogg" id="5_ah40c"]
+[ext_resource type="AudioStream" uid="uid://nu6qu60a6kw7" path="res://Assets/Audio/pepSound1.ogg" id="6_k74nx"]
 
 [sub_resource type="Gradient" id="Gradient_orsuc"]
 offsets = PackedFloat32Array(0.5, 1)
@@ -380,3 +383,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8pi5t")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6savq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pt5nn")
 text = "Nazaj v trgovino"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="." unique_id=1979375777]
+stream = ExtResource("4_jgphi")
+volume_db = -10.0
+autoplay = true
+
+[node name="CorrectSound" type="AudioStreamPlayer2D" parent="." unique_id=325418239]
+stream = ExtResource("5_ah40c")
+
+[node name="WrongSound" type="AudioStreamPlayer2D" parent="." unique_id=1882063679]
+stream = ExtResource("6_k74nx")

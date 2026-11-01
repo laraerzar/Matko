@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://dsilpf83hue5y" path="res://Assets/Sprites/planets/planet02.png" id="34_wwh16"]
 [ext_resource type="Texture2D" uid="uid://hvgn7vryt08s" path="res://Assets/Sprites/planets/planet09.png" id="35_vvftw"]
 [ext_resource type="Texture2D" uid="uid://xvr50m1scrms" path="res://Assets/Sprites/planets/planet07.png" id="36_38f1n"]
+[ext_resource type="AudioStream" uid="uid://bm53i7xopxpyo" path="res://Assets/Audio/airship.mp3" id="37_vvftw"]
 
 [sub_resource type="Environment" id="Environment_0m24b"]
 background_mode = 1
@@ -1012,3 +1013,8 @@ texture = ExtResource("35_vvftw")
 [node name="Sprite3D3" type="Sprite3D" parent="." unique_id=782036358]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.485, -2.617, 38.48)
 texture = ExtResource("36_38f1n")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="." unique_id=1521528463]
+stream = ExtResource("37_vvftw")
+volume_db = -10.0
+autoplay = true

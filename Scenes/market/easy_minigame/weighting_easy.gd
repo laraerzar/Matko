@@ -18,6 +18,10 @@ signal level_completed # sproži se po zadnji stopnji
 @onready var info_label = $InfoLabel
 @onready var one_apple_mass_label = $AppleMassLabel
 
+# zvočni efekti
+@onready var correct_sound = $CorrectSound
+@onready var wrong_sound = $WrongSound
+
 # vsi elementi, ki se prikažejo komaj po kliku na gumb Začni
 @onready var game_nodes = [
 	balance_visual,
@@ -202,17 +206,23 @@ func _on_check_pressed() -> void:
 	var left_mass: int = apples.size() * APPLE_MASS
 
 	if left_mass == target_mass:
+		correct_sound.play()
+		
 		if level_index == LEVELS.size() - 1:
 			info_label.text = "Čestitam! Vsa naročila so uspešno pripravljena! Klikni na gumb \"Končaj\" in se pomeri v težjih izzivih."
 		else:
 			info_label.text = "Čestitam! Naročilo je pravilno pripravljeno in tehtnica je v ravnovesju. Klikni na gumb \"Naslednja stopnja\" za nadaljevanje."
 		next_level_button.visible = true
 		return
-
+	
+	wrong_sound.play()
+	
 	if left_mass < target_mass:
 		info_label.text = "Ojoj, premalo jabolk! Utež je še vedno pretežka. Poskusi znova!"
+		wrong_sound.play()
 	else:
 		info_label.text = "Uf, preveč jabolk! Sedaj so težja od uteži. Poskusi znova!"
+		wrong_sound.play()
 
 	await get_tree().create_timer(RESET_DELAY).timeout
 
