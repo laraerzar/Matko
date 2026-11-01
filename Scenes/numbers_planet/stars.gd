@@ -23,7 +23,7 @@ func _ready() -> void:
 		if dir.length() < 0.1:
 			dir = Vector3.UP
 		var s := randf_range(0.5, 1.6)
-		var basis := Basis.IDENTITY.scaled(Vector3.ONE * s)
+		var _star_basis := Basis.IDENTITY.scaled(Vector3.ONE * s)
 		mm.set_instance_transform(i, Transform3D(basis, dir.normalized() * radius))
 
 	var instance := MultiMeshInstance3D.new()

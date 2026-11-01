@@ -114,7 +114,7 @@ func journey_question() -> Array[Vector2i]:
 	var dep := Vector2i(randi_range(1, 12), randi_range(0, 11) * 5)
 	var duration := randi_range(3, 36) * 5
 	var arrival_total := dep.x * 60 + dep.y + duration
-	time_label.text = "Potovanje" % [dep.x, dep.y]
+	time_label.text = "Potovanje" # % [dep.x, dep.y]
 	prompt_label.text = "Ladja odpotuje ob %02d:%02d in potuje %s. Kdaj prispe?" % [
 			dep.x, dep.y, duration_text(duration)]
 	var result: Array[Vector2i] = [minutes_to_time(arrival_total)]

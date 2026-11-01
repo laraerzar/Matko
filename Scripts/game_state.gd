@@ -12,7 +12,7 @@ const PLANETS: Dictionary = {
 		"name": "Planet števil",
 		"desc": "Števila in računanje",
 		"texture": "res://Assets/Sprites/planets/planet06.png",
-		"scene": "res://Scenes/planet_stevila.tscn",
+		"scene": "res://Scenes/numbers_planet/numbers_planet.tscn",
 	},
 	"merske_enote": {
 		"name": "Planet merskih enot",
@@ -24,13 +24,14 @@ const PLANETS: Dictionary = {
 		"name": "Planet ulomkov",
 		"desc": "Pekarna prijatelja",
 		"texture": "res://Assets/Sprites/planets/planet02.png",
-		"scene": "res://Scenes/planet_ulomki.tscn",
+		"scene": "res://Scenes/Bakery/Bakery.tscn",
 	},
 }
 
 var completed_planets: Array[String] = []
 var total_mistakes: int = 0
 var current_planet: String = "stevila"
+var has_played_number_blocks: bool = false
 
 func planet_name(id: String) -> String:
 	if PLANETS.has(id):
@@ -55,6 +56,7 @@ func station_visit() -> int:
 func start_game() -> void:
 	completed_planets.clear()
 	MarketGameProgress.reset()
+	has_played_number_blocks = false
 	total_mistakes = 0
 	go_to_planet(PLANET_ORDER[0])
 
@@ -78,4 +80,4 @@ func _change_scene(path: String) -> void:
 	if not ResourceLoader.exists(path):
 		push_warning("Scena ne obstaja, nalagam začasno: " + path)
 		target = PLACEHOLDER_SCENE
-	get_tree().change_scene_to_file(target)
+	get_tree().change_scene_to_file.call_deferred(target)
