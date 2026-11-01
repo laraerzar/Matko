@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://8rphk30iw66k"]
+
+[ext_resource type="PackedScene" uid="uid://ciyva8f24dexk" path="res://Assets/Sprites/market/food_kit/bowl.glb" id="2_7xwxf"]
+[ext_resource type="PackedScene" uid="uid://bfcrpsa1a0eui" path="res://Assets/Sprites/market/food_kit/grapes.glb" id="2_c18el"]
+
+[sub_resource type="Environment" id="Environment_2oc2i"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+tonemap_mode = 2
+
+[node name="GrapeBowlView" type="SubViewportContainer" unique_id=787293552]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=490397054]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(160, 160)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=353447562]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1837423760]
+transform = Transform3D(-0.25428882, -0.23769096, 0.93746483, 0.044784833, 0.96539444, 0.25692034, -0.96609086, 0.10731618, -0.23484404, 0.57752573, 0.30105188, -0.095947295)
+environment = SubResource("Environment_2oc2i")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1694121298]
+transform = Transform3D(0.67416835, 0.6335275, 0.37965775, 0.71470076, -0.6892318, -0.11900556, 0.18627891, 0.35157153, -0.91744083, 0.4337335, 0.30875784, -2.0052648)
+
+[node name="bowl" parent="SubViewport" unique_id=640763861 instance=ExtResource("2_7xwxf")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.046856496, 0.050460704)
+
+[node name="grapes" parent="SubViewport" unique_id=1656872473 instance=ExtResource("2_c18el")]
+transform = Transform3D(1, 0, 0, 0, 0.7831595, 0.62182087, 0, -0.62182087, 0.7831595, -0.09907061, 0, -0.0017892495)
+
+[node name="grapes2" parent="SubViewport" unique_id=1759264038 instance=ExtResource("2_c18el")]
+transform = Transform3D(0.52402645, -0.52960604, 0.6670185, 0, 0.7831595, 0.62182087, -0.851702, -0.32585058, 0.41039628, -0.061703682, 2.9802322e-08, 0.13039419)
+
+[node name="grapes3" parent="SubViewport" unique_id=1003617546 instance=ExtResource("2_c18el")]
+transform = Transform3D(-0.415441, 0.5656207, -0.7123775, -6.883546e-09, 0.7831595, 0.62182087, 0.90962005, 0.2583299, -0.32535654, -0.061703682, 2.9802322e-08, 0.13039419)

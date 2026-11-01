@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@export var camera_relative_movement: bool = false
+
 @export var speed: float = 5.0
 @export var turn_speed: float = 12.0
 @export var gravity: float = 20.0
@@ -32,6 +34,22 @@ func _physics_process(delta: float) -> void:
 	input = input.normalized()
 
 	var direction := Vector3(input.x, 0.0, input.y)
+	
+	if camera_relative_movement:
+		var camera := get_viewport().get_camera_3d()
+	
+		if camera != null:
+			var forward := -camera.global_transform.basis.z
+			forward.y = 0.0
+			forward = forward.normalized()
+	
+			var right := camera.global_transform.basis.x
+			right.y = 0.0
+			right = right.normalized()
+	
+			direction = right * input.x + forward * -input.y
+			direction = direction.normalized()
+	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	if is_on_floor():

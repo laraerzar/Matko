@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b728un3ecmd8d"]
+
+[ext_resource type="PackedScene" uid="uid://ciyva8f24dexk" path="res://Assets/Sprites/market/food_kit/bowl.glb" id="1_73bq7"]
+[ext_resource type="PackedScene" uid="uid://ccvgvyw7ffjk6" path="res://Assets/Sprites/market/food_kit/banana.glb" id="2_525vo"]
+
+[sub_resource type="Environment" id="Environment_5tix3"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.1
+tonemap_mode = 2
+
+[node name="BananaBowlView" type="SubViewportContainer" unique_id=647845078]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1952917305]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(160, 160)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport" unique_id=1518519279]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=913517233]
+transform = Transform3D(-0.2557779, -0.273414, 0.9272662, 0.035300996, 0.95589125, 0.29159188, -0.96609086, 0.107316166, -0.23484407, 0.598349, 0.32152164, -0.09191181)
+environment = SubResource("Environment_5tix3")
+current = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=796798103]
+transform = Transform3D(0.67416835, 0.6335275, 0.37965775, 0.71470076, -0.6892318, -0.11900556, 0.18627891, 0.35157153, -0.91744083, 0.4337335, 0.30875784, -2.0052648)
+
+[node name="bowl" parent="SubViewport" unique_id=640763861 instance=ExtResource("1_73bq7")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, -0.046856496, 0.050460704)
+
+[node name="banana" parent="SubViewport" unique_id=1568367920 instance=ExtResource("2_525vo")]
+transform = Transform3D(-0.40878367, 0.6411836, -0.649446, 0.122441255, 0.7437165, 0.6571862, 0.9043812, 0.18912762, -0.3825265, -0.16995877, 0.06229654, -0.040841)
+
+[node name="banana2" parent="SubViewport" unique_id=223257897 instance=ExtResource("2_525vo")]
+transform = Transform3D(0.20329618, 0.55031115, -0.8098327, 0.152104, 0.7993128, 0.5813459, 0.9672312, -0.24136423, 0.07879263, -0.10465214, 0.111888945, 0.1444478)
+
+[node name="banana3" parent="SubViewport" unique_id=72482582 instance=ExtResource("2_525vo")]
+transform = Transform3D(-0.87043476, 0.38696334, -0.30430815, 0.22484559, 0.8624162, 0.45352155, 0.437937, 0.32633853, -0.8376842, -0.0037866235, 0.037868917, -0.06251599)
+
+[node name="banana4" parent="SubViewport" unique_id=1765855639 instance=ExtResource("2_525vo")]
+transform = Transform3D(0.8568975, -0.23304974, -0.4597994, 0.48944104, 0.64777213, 0.58381355, 0.16178766, -0.7253126, 0.6691387, 0.057891786, 0.09756759, 0.25733328)
+
+[node name="banana5" parent="SubViewport" unique_id=1188572549 instance=ExtResource("2_525vo")]
+transform = Transform3D(-0.1945999, 0.6278149, -0.7536439, 0.64557284, 0.6604394, 0.38347754, 0.73849, -0.41190675, -0.5338219, -0.09077722, 0.13767886, 0.032751054)
+
+[node name="banana6" parent="SubViewport" unique_id=1293726527 instance=ExtResource("2_525vo")]
+transform = Transform3D(0.7260032, -0.68653727, -0.03982207, 0.6455729, 0.6604393, 0.38347748, -0.23697208, -0.3041139, 0.9226913, 0.16726285, 0.13767886, 0.1679778)

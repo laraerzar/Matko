@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b1lcev4inxgj4"]
+
+[sub_resource type="GDScript" id="GDScript_w0w2p"]
+script/source = "@tool
+extends Control
+
+const GRAY := Color(\"333333ff\")
+
+func _draw() -> void:
+	# Top-center of the weight (the weight is about 200 px tall,
+	# so this puts it in the middle of the Control)
+	var top := Vector2(size.x / 2.0, size.y / 2.0 - 100.0)
+
+	# Handle (rectangle with round ends)
+	draw_rect(Rect2(top.x - 35, top.y, 70, 25), GRAY)
+	draw_circle(Vector2(top.x - 35, top.y + 12.5), 12.5, GRAY)
+	draw_circle(Vector2(top.x + 35, top.y + 12.5), 12.5, GRAY)
+
+	# Neck
+	draw_rect(Rect2(top.x - 28, top.y + 20, 56, 30), GRAY)
+
+	# Body (wider at the bottom)
+	draw_colored_polygon(PackedVector2Array([
+		Vector2(top.x - 52, top.y + 44),
+		Vector2(top.x + 52, top.y + 44),
+		Vector2(top.x + 89, top.y + 199),
+		Vector2(top.x - 89, top.y + 199),
+	]), GRAY)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED:
+		queue_redraw()
+"
+
+[node name="Weight" type="Control" unique_id=68035426]
+custom_minimum_size = Vector2(700, 350)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 61.0
+offset_top = 85.0
+offset_right = 761.0
+offset_bottom = 435.0
+script = SubResource("GDScript_w0w2p")

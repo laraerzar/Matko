@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://da2rm6qrfhb8x"
+path="res://.godot/imported/easy joy.ogg-f7c8f57d8c81b9fb8118e1fa53dc4a92.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/easy joy.ogg"
+dest_files=["res://.godot/imported/easy joy.ogg-f7c8f57d8c81b9fb8118e1fa53dc4a92.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
