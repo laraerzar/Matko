@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 MarketGameProgress="*uid://cb4d7c4cc3dfv"
 GameState="*uid://dv8xbv1wuut5k"
+NumbersGameProgress="*uid://lqycmffskboc"
 
 [display]
 

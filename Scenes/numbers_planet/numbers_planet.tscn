@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dhnthuoqc56fp" path="res://Assets/Sprites/characters/character-g.glb" id="13_sav6f"]
 [ext_resource type="Script" uid="uid://ce63hlrufvksm" path="res://Scenes/numbers_planet/stars.gd" id="14_dh6xy"]
 [ext_resource type="PackedScene" uid="uid://c3y4gpt8ijypl" path="res://Assets/Sprites/space/alien.glb" id="14_l46qn"]
+[ext_resource type="PackedScene" uid="uid://d3qlkix3n00gd" path="res://Assets/Sprites/space_station/chair-cushion-headrest.glb" id="19_l46qn"]
 [ext_resource type="AudioStream" uid="uid://o0s7y6hli6h6" path="res://Assets/Audio/SynthWave.mp3" id="19_lwf1b"]
 
 [sub_resource type="Environment" id="Environment_tftmq"]
@@ -57,6 +58,17 @@ emission = Color(1, 0.7019608, 0.2784314, 1)
 albedo_color = Color(1.294, 1.055, 0.44, 1)
 emission_enabled = true
 emission = Color(1, 0.7019608, 0.2784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sav6f"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.043137256, 0.0627451, 0.14901961, 0.8509804)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [node name="NumbersPlanet" type="Node3D" unique_id=1840829943]
 script = ExtResource("1_0prxf")
@@ -121,6 +133,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.02118664, 0.64749026,
 text = "POPRAVI RAČUNALNIK 
 (PRITISNI E)
 "
+font_size = 72
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/GameComputer" unique_id=2008949477]
 
@@ -198,7 +211,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.5
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 27.574, -0.6, 20.34684)
 
 [node name="alien2" parent="Room/FrontDesk" unique_id=1843386838 instance=ExtResource("14_l46qn")]
-transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 28.813522, -0.6, -2.9114656)
+transform = Transform3D(-1.0689099, 0, -3.854534, 0, 4, 0, 3.854534, 0, -1.0689099, 25.109297, -0.6, -1.799345)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/FrontDesk/alien2" unique_id=1542552155]
 
@@ -226,6 +239,7 @@ shape = SubResource("BoxShape3D_05q2t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1202393, 0)
 text = "POMAGAJ POPRAVIT 
 RAČUNALNIK"
+font_size = 72
 
 [node name="computer2" parent="Room/FrontDesk" unique_id=219799819 instance=ExtResource("6_0prxf")]
 transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 25.429108, -0.6, 8.715178)
@@ -267,7 +281,7 @@ sides = 32
 material = SubResource("StandardMaterial3D_dh6xy")
 
 [node name="alien2" parent="Room" unique_id=1146501857 instance=ExtResource("14_l46qn")]
-transform = Transform3D(-3.4322596, 0, -2.0541651, 0, 4, 0, 2.0541651, 0, -3.4322596, 25.204847, -0.6, 19.667543)
+transform = Transform3D(1.8404657, 0, -3.5514343, 0, 4, 0, 3.5514343, 0, 1.8404657, 16.52986, -0.6, -4.1896887)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/alien2" unique_id=80248670]
 
@@ -276,12 +290,64 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 
 shape = SubResource("BoxShape3D_f81x7")
 
 [node name="astronautB2" parent="Room" unique_id=1128297779 instance=ExtResource("11_dspic")]
-transform = Transform3D(-3.4322596, 0, -2.0541651, 0, 4, 0, 2.0541651, 0, -3.4322596, 22.00252, -0.6, 5.635115)
+transform = Transform3D(-3.4322596, 0, -2.0541651, 0, 4, 0, 2.0541651, 0, -3.4322596, 21.685957, -0.6, 5.8245745)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/astronautB2" unique_id=1102405545]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/astronautB2/StaticBody3D" unique_id=1713742302]
+transform = Transform3D(0.5, 0, 2.384186e-08, 0, 0.5, 0, -2.384186e-08, 0, 0.5, 1.9827445, 0.44585314, 1.5278714)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="astronautB3" parent="Room" unique_id=214237528 instance=ExtResource("11_dspic")]
+transform = Transform3D(-1.7778968, 0, -3.5831666, 0, 4, 0, 3.5831666, 0, -1.7778968, 29.128475, -0.6, 14.771674)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/astronautB3" unique_id=1091613352]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/astronautB3/StaticBody3D" unique_id=858659877]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="astronautA2" parent="Room" unique_id=1821275395 instance=ExtResource("12_lwf1b")]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 23.925499, -0.6, 10.041245)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/astronautA2" unique_id=309936152]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/astronautA2/StaticBody3D" unique_id=1345431590]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="Chairs" type="Node3D" parent="Room" unique_id=1234243290]
+
+[node name="chair-cushion-headrest2" parent="Room/Chairs" unique_id=2143994164 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.500271, -0.5999997, 7.4190216)
+
+[node name="chair-cushion-headrest3" parent="Room/Chairs" unique_id=1515934705 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.500271, -0.5999997, 9.374342)
+
+[node name="chair-cushion-headrest4" parent="Room/Chairs" unique_id=578830541 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.5002708, -0.5999997, 5.331721)
+
+[node name="chair-cushion-headrest5" parent="Room/Chairs" unique_id=191403776 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.5002716, -0.5999997, 18.886581)
+
+[node name="chair-cushion-headrest6" parent="Room/Chairs" unique_id=811765908 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.5002716, -0.5999997, 20.784285)
+
+[node name="chair-cushion-headrest7" parent="Room/Chairs" unique_id=1431179077 instance=ExtResource("19_l46qn")]
+transform = Transform3D(-2.1855695e-07, 0, 5, 0, 5, 0, -5, 0, -2.1855695e-07, 2.5002716, -0.5999997, 22.655666)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Chairs" unique_id=96398256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6279907, 0, 4.6277466)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Chairs/StaticBody3D" unique_id=1841936223]
+transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, -0.41104388, 0.445609, 2.7962961)
+shape = SubResource("BoxShape3D_f81x7")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Room/Chairs" unique_id=924390273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6279907, 0, 17.998732)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Chairs/StaticBody3D2" unique_id=1116303867]
+transform = Transform3D(6.5, 0, 0, 0, 6.5, 0, 0, 0, 6.5, -0.41104388, 0.445609, 2.7962961)
 shape = SubResource("BoxShape3D_f81x7")
 
 [node name="Stars" type="Node3D" parent="." unique_id=1689728942]
@@ -291,3 +357,50 @@ script = ExtResource("14_dh6xy")
 stream = ExtResource("19_lwf1b")
 volume_db = -15.0
 autoplay = true
+
+[node name="IntroLayer" type="CanvasLayer" parent="." unique_id=679636977]
+visible = false
+
+[node name="Margin" type="MarginContainer" parent="IntroLayer" unique_id=384577470]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 30
+
+[node name="Box" type="PanelContainer" parent="IntroLayer/Margin" unique_id=341971833]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_sav6f")
+
+[node name="VBox" type="VBoxContainer" parent="IntroLayer/Margin/Box" unique_id=733321037]
+layout_mode = 2
+
+[node name="IntroText" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=1090980039]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 3
+
+[node name="ContinueHint" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=1761835602]
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pritisni preslednico za naprej...
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="alien2" parent="." unique_id=201697540 instance=ExtResource("14_l46qn")]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 28.813522, -0.6, -2.9114656)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="alien2" unique_id=1107183954]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="alien2/StaticBody3D" unique_id=977055791]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.9827447, 0.44585314, 1.5278715)
+shape = SubResource("BoxShape3D_f81x7")

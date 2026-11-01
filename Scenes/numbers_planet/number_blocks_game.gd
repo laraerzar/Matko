@@ -466,5 +466,5 @@ func style_button(button: Button, color_hex: String) -> void:
 
 #vračanje na planet
 func return_to_planet() -> void:
-	GameState.has_played_number_blocks = true
+	NumbersGameProgress.has_played_number_blocks = true
 	get_tree().change_scene_to_file("res://Scenes/numbers_planet/numbers_planet.tscn")

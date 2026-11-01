@@ -31,7 +31,6 @@ const PLANETS: Dictionary = {
 var completed_planets: Array[String] = []
 var total_mistakes: int = 0
 var current_planet: String = "stevila"
-var has_played_number_blocks: bool = false
 
 func planet_name(id: String) -> String:
 	if PLANETS.has(id):
@@ -56,7 +55,7 @@ func station_visit() -> int:
 func start_game() -> void:
 	completed_planets.clear()
 	MarketGameProgress.reset()
-	has_played_number_blocks = false
+	NumbersGameProgress.reset()
 	total_mistakes = 0
 	go_to_planet(PLANET_ORDER[0])
 
