@@ -31,8 +31,6 @@ func _ready() -> void:
 	$MenuBox/EasyButton.pressed.connect(func(): _begin(0))
 	$MenuBox/MediumButton.pressed.connect(func(): _begin(1))
 	$MenuBox/HardButton.pressed.connect(func(): _begin(2))
-	$VBoxContainer/PartsRow/MinusButton.pressed.connect(func(): _set_parts(parts - 1))
-	$VBoxContainer/PartsRow/PlusButton.pressed.connect(func(): _set_parts(parts + 1))
 	$VBoxContainer/PartsRow/MinusButton.pressed.connect(_on_minus)
 	$VBoxContainer/PartsRow/PlusButton.pressed.connect(_on_plus)
 	$ResultBox/RetryButton.pressed.connect(_on_main_button)
