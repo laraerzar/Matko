@@ -21,8 +21,4 @@ func _on_body_entered(body: Node3D) -> void:
 		return
 	finished = true
 	
-	# TEST: simuliram, da je bil prvi planet že opravljen
-	# if not GameState.is_completed("stevila"):
-	# 	GameState.completed_planets.append("stevila")
-		
 	GameState.call_deferred("finish_planet", planet_id, 0)
