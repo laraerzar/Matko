@@ -48,6 +48,8 @@
 [ext_resource type="PackedScene" uid="uid://c3ngd7aw6cp08" path="res://Assets/Sprites/bakery/furniture_kit/tableCoffeeGlass.glb" id="45_mw58g"]
 [ext_resource type="PackedScene" uid="uid://by7rvte4s0fhl" path="res://Assets/Sprites/bakery/furniture_kit/wallWindow.glb" id="46_7frvj"]
 [ext_resource type="Script" uid="uid://c66jgp3drq0oh" path="res://Scenes/Bakery/fraction_shape.gd" id="46_w3pdj"]
+[ext_resource type="AudioStream" uid="uid://b8cyap3suh6dn" path="res://Assets/Audio/b_msx_cutscene.ogg" id="50_gprda"]
+[ext_resource type="AudioStream" uid="uid://cumr2ulafg58c" path="res://Assets/Audio/b_cut.ogg" id="50_wm7jk"]
 
 [sub_resource type="Environment" id="Environment_3wo78"]
 background_mode = 1
@@ -99,7 +101,7 @@ size = Vector3(1.7971191, 2.303711, 11.334412)
 size = Vector3(3.0236778, 0.07861328, 2.945672)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yd4eq"]
-size = Vector3(0.001, 4.2319336, 15.223007)
+size = Vector3(0.75561816, 4.2319336, 15.223007)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ydguh"]
 size = Vector3(3.0252876, 0.805542, 0.023788452)
@@ -119,6 +121,12 @@ transform = Transform3D(1, 1.5238793e-08, -1.7418022e-07, 0, 0.9961947, 0.087155
 transform = Transform3D(0.9998157, -0.0075318697, 0.01765822, 0, 0.9198215, 0.3923371, -0.019197444, -0.3922648, 0.919652, -4, 5.321, 4)
 fov = 36.2
 script = ExtResource("2_m2lke")
+
+[node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=1911104475]
+process_mode = 3
+transform = Transform3D(0.9998986, -0.012832617, 0.006175332, 0.012853574, 0.9999117, -0.003365955, -0.0061315927, 0.003444989, 0.99997526, -0.43522727, 0.03072834, -3.8989058)
+stream = ExtResource("50_gprda")
+autoplay = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=900502394]
 script = ExtResource("2_ttgj7")
@@ -321,7 +329,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.549551, 1.0931537, 1.114186
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.549551, 0.3847046, 1.1141863)
 
 [node name="cake3" parent="Room/Food" unique_id=952422559 instance=ExtResource("28_7frvj")]
-transform = Transform3D(6.762095, 4.200491, -0.7936912, -1.2985194e-07, -1.485333, -7.8609023, -4.2748184, 6.6445208, -1.2554953, 28.318222, 6.042248, -46.9293)
+transform = Transform3D(6.762095, 4.200491, -0.7936912, -1.2985194e-07, -1.485333, -7.8609023, -4.2748184, 6.6445208, -1.2554953, 11.633629, 6.042248, -6.652426)
 
 [node name="cookie2" parent="Room/Food" unique_id=844026528 instance=ExtResource("29_gprda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7098663, 1.4961995, -2.671839)
@@ -480,16 +488,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7864053, 1.7093887, -1.6912
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7864053, 1.9409091, -1.1078234)
 
 [node name="donut-sprinkles6" parent="Room/Food" unique_id=2019066309 instance=ExtResource("35_b8gu8")]
-transform = Transform3D(-11.677766, -15.275416, 5.5037637, 6.9595613, 1.4159389, 18.696514, -14.669499, 12.831864, 4.48876, 1.7864053, 5.307994, -17.072432)
-
-[node name="donut-sprinkles7" parent="Room/Food" unique_id=1570097436 instance=ExtResource("35_b8gu8")]
-transform = Transform3D(15.068112, -12.290943, -4.6781044, 6.9595604, 1.4159389, 18.696514, -11.158691, -15.713938, 5.343755, 1.7864053, 5.307994, 13.924303)
+transform = Transform3D(-11.677766, -15.275416, 5.5037637, 6.9595613, 1.4159389, 18.696514, -14.669499, 12.831864, 4.48876, 1.7467363, 5.307994, -15.878133)
 
 [node name="croissant11" parent="Room/Food" unique_id=1297550087 instance=ExtResource("43_1og4w")]
 transform = Transform3D(-0.79742306, 0, -0.06415921, 0, 0.8, 0, 0.06415921, 0, -0.79742306, 1.8771243, 1.9414134, -1.5506914)
 
 [node name="croissant12" parent="Room/Food" unique_id=1131229119 instance=ExtResource("43_1og4w")]
-transform = Transform3D(-23.922691, 1.5843539, -1.0929707, 1.1914191e-06, 13.628245, 19.755274, 1.924776, 19.691639, -13.584348, 1.4639721, 0.14313078, -27.983315)
+transform = Transform3D(-23.922691, 1.5843539, -1.0929707, 1.1914191e-06, 13.628245, 19.755274, 1.924776, 19.691639, -13.584348, 17.97021, 6.3267303, -30.625345)
 
 [node name="tableCoffeeGlass4" parent="Room/Food" unique_id=1591594502 instance=ExtResource("45_mw58g")]
 transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 2.0223143, 1.146544, -1.6235297)
@@ -945,7 +950,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4434824, 1.6159668, -3.0567
 shape = SubResource("BoxShape3D_yd4eq")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="Room/wall" unique_id=1554520369]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.514992, 1.6159668, -3.0567923)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.150722, 1.6159668, -3.0567923)
 shape = SubResource("BoxShape3D_yd4eq")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Room/wall" unique_id=2138779318]
@@ -1102,6 +1107,10 @@ custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Izhod"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="PizzaPuzzle" unique_id=447334924]
+process_mode = 3
+stream = ExtResource("50_wm7jk")
 
 [node name="rugRectangle" parent="." unique_id=117613432 instance=ExtResource("22_7nwcs")]
 transform = Transform3D(-1.7484555e-07, 0, 4, 0, 4, 0, -4, 0, -1.7484555e-07, -2.894515, 0.006851673, 2.8357823)

@@ -33,6 +33,8 @@ func _ready() -> void:
 	$MenuBox/HardButton.pressed.connect(func(): _begin(2))
 	$VBoxContainer/PartsRow/MinusButton.pressed.connect(func(): _set_parts(parts - 1))
 	$VBoxContainer/PartsRow/PlusButton.pressed.connect(func(): _set_parts(parts + 1))
+	$VBoxContainer/PartsRow/MinusButton.pressed.connect(_on_minus)
+	$VBoxContainer/PartsRow/PlusButton.pressed.connect(_on_plus)
 	$ResultBox/RetryButton.pressed.connect(func(): _begin(mode))
 	$ResultBox/BackToMenuButton.pressed.connect(_show_menu)
 	$ResultBox/ExitButton.pressed.connect(_exit)
@@ -183,3 +185,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
 		visible = false
 		finished.emit(false)
+		
+func _on_minus() -> void:
+	$ClickSound.play()
+	_set_parts(parts - 1)
+
+func _on_plus() -> void:
+	$ClickSound.play()
+	_set_parts(parts + 1)
