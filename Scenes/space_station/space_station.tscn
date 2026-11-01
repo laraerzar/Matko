@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b3esbml54ploe" path="res://Assets/Sprites/space_station/wall-door-wide.glb" id="18_74cvs"]
 [ext_resource type="Texture2D" uid="uid://xvr50m1scrms" path="res://Assets/Sprites/planets/planet07.png" id="19_14j7a"]
 [ext_resource type="Script" uid="uid://wy8vq01gmx63" path="res://Scenes/space_station/route_map.gd" id="22_7mdpg"]
+[ext_resource type="AudioStream" uid="uid://3io4qkwnw6yh" path="res://Assets/Music/starwalk.mp3" id="23_14j7a"]
 [ext_resource type="AudioStream" uid="uid://bmlgcsxbqokn6" path="res://Assets/Audio/spaceEngine_003.ogg" id="24_px7c3"]
 
 [sub_resource type="Environment" id="Environment_8mjrn"]
@@ -919,5 +920,6 @@ theme_override_constants/separation = 60
 alignment = 1
 
 [node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=1748362519]
+stream = ExtResource("23_14j7a")
 volume_db = -10.0
 autoplay = true
