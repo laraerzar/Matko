@@ -26,6 +26,16 @@
 [ext_resource type="PackedScene" uid="uid://q3xk4kywflb2" path="res://Assets/Sprites/market/mini_market/freezers-standing.glb" id="24_010vy"]
 [ext_resource type="Script" uid="uid://q8ikdlqcmjv4" path="res://Scenes/market/market_scene/exit_gate.gd" id="25_r5bvj"]
 [ext_resource type="Script" uid="uid://wy8vq01gmx63" path="res://Scenes/space_station/route_map.gd" id="26_17c4t"]
+[ext_resource type="Script" uid="uid://btqj8ovpkd42i" path="res://Scenes/market/market_scene/market_flow.gd" id="27_f1nmg"]
+[ext_resource type="PackedScene" uid="uid://dt02ronoypbi" path="res://Assets/Sprites/characters/character-f.glb" id="28_dprce"]
+[ext_resource type="PackedScene" uid="uid://cx1rqtkjsord8" path="res://Assets/Sprites/characters/character-e.glb" id="29_a46m4"]
+[ext_resource type="PackedScene" uid="uid://dfay8jub73irj" path="res://Assets/Sprites/characters/character-i.glb" id="30_h5b3e"]
+[ext_resource type="PackedScene" uid="uid://bwpd0llfafmhd" path="res://Assets/Sprites/characters/character-c.glb" id="31_1qy2x"]
+[ext_resource type="PackedScene" uid="uid://1w7tqapvjed7" path="res://Assets/Sprites/market/mini_market/character-employee.glb" id="32_wwh16"]
+[ext_resource type="Script" uid="uid://bapgexvyyce72" path="res://Scenes/space_station/stars.gd" id="33_a46m4"]
+[ext_resource type="Texture2D" uid="uid://dsilpf83hue5y" path="res://Assets/Sprites/planets/planet02.png" id="34_wwh16"]
+[ext_resource type="Texture2D" uid="uid://hvgn7vryt08s" path="res://Assets/Sprites/planets/planet09.png" id="35_vvftw"]
+[ext_resource type="Texture2D" uid="uid://xvr50m1scrms" path="res://Assets/Sprites/planets/planet07.png" id="36_38f1n"]
 
 [sub_resource type="Environment" id="Environment_0m24b"]
 background_mode = 1
@@ -103,6 +113,20 @@ size = Vector3(0.1665039, 1, 0.16119385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5bvj"]
 size = Vector3(0.1643219, 1, 0.1809082)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_17c4t"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.043137256, 0.0627451, 0.14901961, 0.8509804)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cgyu"]
+size = Vector3(3.3376465, 5.4555664, 2.437683)
 
 [node name="Market" type="Node3D" unique_id=1687185113]
 
@@ -741,6 +765,21 @@ transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 6.
 [node name="freezers-standing3" parent="Room" unique_id=1094911607 instance=ExtResource("24_010vy")]
 transform = Transform3D(-2.1855695e-07, 0, -5, 0, 5, 0, 5, 0, -2.1855695e-07, 6.573, 0.1, 2.929)
 
+[node name="character-f2" parent="Room" unique_id=1614581178 instance=ExtResource("28_dprce")]
+transform = Transform3D(-0.64944804, 0, 0.76040596, 0, 1, 0, -0.76040596, 0, -0.64944804, -7.103, 0.1, 3.722)
+
+[node name="character-e2" parent="Room" unique_id=853474298 instance=ExtResource("29_a46m4")]
+transform = Transform3D(0.9170601, 0, -0.39874908, 0, 1, 0, 0.39874908, 0, 0.9170601, 1.569, 0.1, -6.422)
+
+[node name="character-i2" parent="Room" unique_id=955613618 instance=ExtResource("30_h5b3e")]
+transform = Transform3D(-0.71325046, 0, 0.70090926, 0, 1, 0, -0.70090926, 0, -0.71325046, 4.362, 0.1, 8.315)
+
+[node name="character-c2" parent="Room" unique_id=214218437 instance=ExtResource("31_1qy2x")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -6.515, 0.1, -3.899)
+
+[node name="character-employee2" parent="Room" unique_id=2061476861 instance=ExtResource("32_wwh16")]
+transform = Transform3D(1.8051705, 0, -0.86102223, 0, 2, 0, 0.86102223, 0, 1.8051705, -1.268, 0.1, -0.178)
+
 [node name="FloorCollision" type="StaticBody3D" parent="." unique_id=1715436679]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorCollision" unique_id=400014103]
@@ -860,6 +899,14 @@ script = ExtResource("25_r5bvj")
 transform = Transform3D(22, 0, 0, 0, 5.5, 0, 0, 0, 5, -5.392, 2.8, -10.258)
 shape = SubResource("BoxShape3D_r6b4k")
 
+[node name="GateLabel" type="Label3D" parent="ExitGate" unique_id=59666047]
+transform = Transform3D(3.67, 0, 0, 0, 3.67, 0, 0, 0, 3.67, -5.024, 4.495, -7.554)
+billboard = 2
+text = "
+
+"
+autowrap_mode = 3
+
 [node name="GateBlocker" type="StaticBody3D" parent="." unique_id=1966376103]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GateBlocker" unique_id=225321230]
@@ -903,3 +950,65 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
+
+[node name="IntroLayer" type="CanvasLayer" parent="." unique_id=421162144]
+visible = false
+
+[node name="Margin" type="MarginContainer" parent="IntroLayer" unique_id=249156400]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 30
+
+[node name="Box" type="PanelContainer" parent="IntroLayer/Margin" unique_id=1871461045]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_17c4t")
+
+[node name="VBox" type="VBoxContainer" parent="IntroLayer/Margin/Box" unique_id=668256962]
+layout_mode = 2
+
+[node name="IntroText" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=1545575487]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+autowrap_mode = 3
+
+[node name="ContinueHint" type="Label" parent="IntroLayer/Margin/Box/VBox" unique_id=863347610]
+custom_maximum_size = Vector2(-1, 35)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Pritisni preslednico za naprej...
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="MarketFlow" type="Node" parent="." unique_id=82291887]
+script = ExtResource("27_f1nmg")
+
+[node name="GateHintArea" type="Area3D" parent="." unique_id=437364955]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GateHintArea" unique_id=482405292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.814615, 2.2277832, -7.246654)
+shape = SubResource("BoxShape3D_0cgyu")
+
+[node name="Stars" type="Node3D" parent="." unique_id=786520908]
+script = ExtResource("33_a46m4")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=105624576]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -8.721, 2.086, 41.645)
+texture = ExtResource("34_wwh16")
+
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=1401142418]
+transform = Transform3D(0.47286502, -0.16247667, 0, 0.16247667, 0.47286502, 0, 0, 0, 0.5, -7.048, 13.568, -46.91)
+texture = ExtResource("35_vvftw")
+
+[node name="Sprite3D3" type="Sprite3D" parent="." unique_id=782036358]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 15.485, -2.617, 38.48)
+texture = ExtResource("36_38f1n")
