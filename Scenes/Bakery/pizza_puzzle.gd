@@ -35,16 +35,14 @@ func _ready() -> void:
 	$VBoxContainer/PartsRow/PlusButton.pressed.connect(func(): _set_parts(parts + 1))
 	$VBoxContainer/PartsRow/MinusButton.pressed.connect(_on_minus)
 	$VBoxContainer/PartsRow/PlusButton.pressed.connect(_on_plus)
-	$ResultBox/RetryButton.pressed.connect(func(): _begin(mode))
+	$ResultBox/RetryButton.pressed.connect(_on_main_button)
 	$ResultBox/BackToMenuButton.pressed.connect(_show_menu)
 	$ResultBox/ExitButton.pressed.connect(_exit)
 	submit_button.pressed.connect(_on_submit)
 
 func start() -> void:
-	current = 0
-	score = 0
-	_show_menu()
 	visible = true
+	_begin(0)
 
 func _show_menu() -> void:
 	menu_box.visible = true
@@ -53,7 +51,7 @@ func _show_menu() -> void:
 
 func _exit() -> void:
 	visible = false
-	finished.emit(score >= PASS_SCORE)
+	finished.emit(false)
 
 func _begin(chosen_mode: int) -> void:
 	mode = chosen_mode
@@ -68,7 +66,27 @@ func _begin(chosen_mode: int) -> void:
 func _show_results() -> void:
 	game_box.visible = false
 	result_box.visible = true
-	result_label.text = "Pravilnih odgovorov: %d/%d" % [score, orders.size()]
+	$ResultBox/BackToMenuButton.visible = false
+	var text := ""
+	if score < PASS_SCORE:
+		text = "Ni uspelo!\nPravilnih odgovorov: %d/%d" % [score, orders.size()]
+		$ResultBox/RetryButton.text = "Poskusi znova"
+	elif mode < 2:
+		text = "Pravilnih odgovorov: %d/%d" % [score, orders.size()]
+		$ResultBox/RetryButton.text = "Naprej"
+	else:
+		text = "Zmagal si!\nPravilnih odgovorov: %d/%d" % [score, orders.size()]
+		$ResultBox/RetryButton.text = "Končaj"
+	result_label.text = text
+
+func _on_main_button() -> void:
+	if score < PASS_SCORE:
+		_begin(mode)
+	elif mode < 2:
+		_begin(mode + 1)
+	else:
+		visible = false
+		finished.emit(true)
 
 func _make_orders() -> void:
 	orders.clear()
