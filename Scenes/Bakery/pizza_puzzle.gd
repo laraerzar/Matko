@@ -85,6 +85,7 @@ func _on_main_button() -> void:
 	else:
 		visible = false
 		finished.emit(true)
+		GameState.finish_planet("ulomki", 0)
 
 func _make_orders() -> void:
 	orders.clear()
